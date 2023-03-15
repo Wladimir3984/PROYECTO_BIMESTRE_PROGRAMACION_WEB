@@ -1,80 +1,71 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>GAMESITE</title>
-	<!-- Enlaces a hojas de estilo CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="static/catalogo.css">
-</head>
-<body>
-	<header>
-        <nav class="navbar navbar-expand navbar-dark bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">GameSite</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								Categorías
-							</a>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="terror.html">Terror</a></li>
-								<li><a class="dropdown-item active" href="guerra.html">Guerra</a></li>
-								<li><a class="dropdown-item" href="aventura.html">Aventura</a></li>
-								<li><a class="dropdown-item" href="rpg.html">RPG</a></li>
-								<li><a class="dropdown-item" href="plataforma.html">Plataforma</a></li>
-							</ul>
-						</li>
+  <head>
+    <meta charset="UTF-8" />
+    <title>GAMESITE</title>
+    <!-- Enlaces a hojas de estilo CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="static/css/catalogo.css" />
+  </head>
+  <body>
+    <header>
+      <div id="baseNav"></div>
+    </header>
 
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">Sobre nosotros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">Contacto</a>
-                        </li>
-                   </ul>
+    <main>
+      <div id="catalogo">
+        <div class="container">
+          <div class="row">
+            <div class="col-3 mt-3 me-3">
+              <div class="card custom-card" style="width: 18rem">
+                <img src="img/guerra/cod.jpg" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title">cod warzone</h5>
+                  <p class="card-text">
+                    Call of Duty: Warzone es un videojuego de disparos en
+                    primera persona, perteneciente al género Battle royale
+                    gratuito, lanzado el 10 de marzo de 2020 para PlayStation 4,
+                    PlayStation 5, Xbox One, Xbox Series X|S y Microsoft
+                    Windows.
+                  </p>
                 </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Precio: $5.500</li>
+                </ul>
+              </div>
             </div>
-        </nav>
-	</header>
-	
-	<main>
-       <div id="catalogo">
-            <div class="container">
-            <div class="row">
-                <div class="col-3 mt-3 me-3">
-                    <div class="card custom-card" style="width: 18rem;">
-                        <img src="img/guerra/cod.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">cod warzone</h5>
-                            <p class="card-text">Call of Duty: Warzone es un videojuego de disparos en primera persona, perteneciente al género Battle royale gratuito, lanzado el 10 de marzo de 2020 para PlayStation 4, PlayStation 5, Xbox One, Xbox Series X|S y Microsoft Windows.</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Precio: $5.500</li>
-                        </ul>
-                    </div>
+            <div class="col-3 mt-3 me-3">
+              <div class="card custom-card" style="width: 18rem">
+                <img src="img/guerra/snp.jpg" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title">sniper elite 4</h5>
+                  <p class="card-text">
+                    Sniper Elite 4 es un videojuego de táctica en tercera
+                    persona diseñado por Rebellion Developments.​ Como la
+                    secuela directa de Sniper Elite III, el juego fue lanzado
+                    para Microsoft Windows, PlayStation 4 y Xbox One el 14 de
+                    febrero de 2017.
+                  </p>
                 </div>
-                <div class="col-3 mt-3 me-3">
-                    <div class="card custom-card" style="width: 18rem;">
-                        <img src="img/guerra/snp.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">sniper elite 4</h5>
-                            <p class="card-text">Sniper Elite 4 es un videojuego de táctica en tercera persona diseñado por Rebellion Developments.​ Como la secuela directa de Sniper Elite III, el juego fue lanzado para Microsoft Windows, PlayStation 4 y Xbox One el 14 de febrero de 2017.</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Precio: $3.500</li>
-                        </ul>
-                    </div>
-
-                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Precio: $3.500</li>
+                </ul>
+              </div>
             </div>
-           
+          </div>
         </div>
-    </div>		
+      </div>
     </main>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <script src="static/js/baseNav.js"></script>
+  </body>
+</html>
