@@ -1,5 +1,3 @@
-
-
 main {
   background: #d3cce3; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -16,18 +14,7 @@ main {
 
 /* responsive section */
 
-@media screen and (max-width: 640px){
-  .carousel,
-  .carousel-inner,
-  .carousel-item {
-    height: 20vh;
-  }
-  .carousel-caption {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1280px) { /* en pantallas mas grandes de disminuye el carrusel para mostrar mas contenido */
 .carousel,
 .carousel-inner,
 .carousel-item {
