@@ -1,0 +1,23 @@
+
+.form-control-error{
+    display: none;
+    color: red;
+}
+
+.form-control-error-active{
+	display: block;
+}
+
+.input-group-incorrect .form-control{
+    color: #bb2929;
+    border: 3px solid #bb2929;
+}
+
+.input-group-correct .form-control{
+    color: #000000;
+    border: 3px solid #1ed12d;
+}
+
+.input-group-incorrect .form-input{
+    border: 3px solid #bb2929;
+}
