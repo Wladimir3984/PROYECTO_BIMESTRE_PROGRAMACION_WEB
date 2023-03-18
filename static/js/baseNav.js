@@ -1,6 +1,7 @@
 let baseNav = document.getElementById("baseNav");
 baseNav.innerHTML += `
-<nav class="navbar navbar-expand navbar-dark bg-dark">
+<nav class="navbar navbar-expand navbar-dark bg-dark"
+     style="padding-left:1rem">
   <a class="navbar-brand" href="index.html">GameSite</a>
   <button
     class="navbar-toggler"
