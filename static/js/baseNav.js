@@ -42,10 +42,7 @@ baseNav.innerHTML += `
         </ul>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="#">Sobre nosotros</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Contactanos</a>
+        <a class="nav-link active" href="formulario.html">Unete</a>
       </li>
     </ul>
   </div>
