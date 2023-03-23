@@ -1,4 +1,4 @@
-# Repositorio para llevar seguimiento de nuestro trabajo durante el proyecto
+# Repositorio para llevar seguimiento de nuestro trabajo durante el bimestre
 
 ## Curso: 
   - PROGRAMACION WEB_002A
