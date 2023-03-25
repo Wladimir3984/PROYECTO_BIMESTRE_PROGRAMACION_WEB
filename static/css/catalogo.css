@@ -16,3 +16,10 @@ body {
 #catalogo .card img{
   width: 100%;
 }
+
+.dropdown-menu-center {
+    left: 50% !important;
+    right: auto !important;
+    text-align: center !important;
+    transform: translate(-50%, 0) !important;
+}

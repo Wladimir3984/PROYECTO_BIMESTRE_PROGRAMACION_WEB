@@ -47,8 +47,38 @@ baseNav.innerHTML += `
       </li>
     </ul>
     <ul class="navbar-nav ms-auto pe-2">
+            <span class="d-none" id="admin-dd">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  >
+                  ADMIN
+                </a>
+                <ul
+                  class="dropdown-menu dropdown-menu-center"
+                  aria-labelledby="navbarDropdown"
+                  >
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Configuración de catalogo</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Analisis de datos</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Monitorear usuarios</a>
+                  </li>
+                </ul>
+              </li>
+            </span>
       <li class="nav-item">
-        <a class="nav-link active" href="loggin.html">Iniciar sesión</a>
+        <a class="nav-link active" href="loggin.html"><span id="admin-status"></span></a>
       </li>
     </ul>
   </div>
