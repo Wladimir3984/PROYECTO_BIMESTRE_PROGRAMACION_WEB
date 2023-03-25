@@ -2,7 +2,7 @@ let baseNav = document.getElementById("baseNav");
 baseNav.innerHTML += `
 <nav class="navbar navbar-expand-md navbar-dark bg-dark"
      style="padding-left:1rem">
-  <a class="navbar-brand" href="index.html">GameSite</a>
+  <a class="navbar-brand" href="../index.html">GameSite</a>
   <button
     class="navbar-toggler"
     type="button"
@@ -28,17 +28,17 @@ baseNav.innerHTML += `
         </a>
         <ul class="dropdown-menu">
           <li>
-            <a class="dropdown-item" href="terror.html">Terror</a>
+            <a class   = "dropdown-item" href="terror.html">Terror</a>
           </li>
           <li>
-            <a class="dropdown-item" href="guerra.html">Guerra</a>
+            <a class   = "dropdown-item" href="guerra.html">Guerra</a>
           </li>
           <li>
-            <a class="dropdown-item" href="aventura.html">Aventura</a>
+            <a class   = "dropdown-item" href="aventura.html">Aventura</a>
           </li>
-          <li><a class="dropdown-item" href="rpg.html">RPG</a></li>
+          <li><a class = "dropdown-item" href="rpg.html">RPG</a></li>
           <li>
-            <a class="dropdown-item" href="plataforma.html">Plataforma</a>
+            <a class   = "dropdown-item" href="plataforma.html">Plataforma</a>
           </li>
         </ul>
       </li>
