@@ -48,7 +48,7 @@ baseNav.innerHTML += `
     </ul>
     <ul class="navbar-nav ms-auto pe-2">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Iniciar sesión</a>
+        <a class="nav-link active" href="loggin.html">Iniciar sesión</a>
       </li>
     </ul>
   </div>

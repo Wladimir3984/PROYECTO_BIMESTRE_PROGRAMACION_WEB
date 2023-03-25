@@ -1,0 +1,13 @@
+#col_loggin{
+    background-color: rgba(9, 3, 58, 0.233);
+}
+
+.incorrecto{
+    color: red;
+    
+}
+
+.correcto{
+    color: rgb(0, 255, 0);
+}
+
