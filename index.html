@@ -11,6 +11,14 @@
       crossorigin="anonymous"
     />
     <link href="static/css/index.css" rel="stylesheet" />
+    <style>
+      .dropdown-menu-center {
+        left: 50% !important;
+        right: auto !important;
+        text-align: center !important;
+        transform: translate(-50%, 0) !important;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -44,27 +52,69 @@
               </a>
               <ul class="dropdown-menu">
                 <li>
-                  <a class   = "dropdown-item" href="templates/terror.html">Terror</a>
+                  <a class="dropdown-item" href="templates/terror.html"
+                    >Terror</a
+                  >
                 </li>
                 <li>
-                  <a class   = "dropdown-item" href="templates/guerra.html">Guerra</a>
+                  <a class="dropdown-item" href="templates/guerra.html"
+                    >Guerra</a
+                  >
                 </li>
                 <li>
-                  <a class   = "dropdown-item" href="templates/aventura.html">Aventura</a>
+                  <a class="dropdown-item" href="templates/aventura.html"
+                    >Aventura</a
+                  >
                 </li>
-                <li><a class = "dropdown-item" href="templates/rpg.html">RPG</a></li>
                 <li>
-                  <a class   = "dropdown-item" href="templates/plataforma.html">Plataforma</a>
+                  <a class="dropdown-item" href="templates/rpg.html">RPG</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="templates/plataforma.html"
+                    >Plataforma</a
+                  >
                 </li>
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="templates/formulario.html">Unete</a>
+              <a class="nav-link active" href="templates/formulario.html"
+                >Unete</a
+              >
             </li>
           </ul>
           <ul class="navbar-nav ms-auto pe-2">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                ADMIN
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-center"
+                aria-labelledby="navbarDropdown"
+              >
+                <li>
+                  <a class="dropdown-item" href="#"
+                    >Configuración de catalogo</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Analisis de datos</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Monitorear usuarios</a>
+                </li>
+              </ul>
+            </li>
             <li class="nav-item">
-              <a class="nav-link active" href="templates/loggin.html">Iniciar sesión</a>
+              <a class="nav-link active" href="templates/loggin.html"
+                >Iniciar sesión</a
+              >
             </li>
           </ul>
         </div>
