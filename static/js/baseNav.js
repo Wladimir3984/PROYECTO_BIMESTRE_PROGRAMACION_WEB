@@ -1,6 +1,6 @@
 let baseNav = document.getElementById("baseNav");
 baseNav.innerHTML += `
-<nav class="navbar navbar-expand navbar-dark bg-dark"
+<nav class="navbar navbar-expand-md navbar-dark bg-dark"
      style="padding-left:1rem">
   <a class="navbar-brand" href="index.html">GameSite</a>
   <button
@@ -44,6 +44,11 @@ baseNav.innerHTML += `
       </li>
       <li class="nav-item">
         <a class="nav-link active" href="formulario.html">Unete</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ms-auto pe-2">
+      <li class="nav-item">
+        <a class="nav-link active" href="loggin.html">Iniciar sesión</a>
       </li>
     </ul>
   </div>
