@@ -21,6 +21,7 @@ updateSpanVisibility();
 // y una vez que cargue completamente, se ejecutara js
 $(document).ready(function () {
     $("#mensaje").hide();
+    alert("Para iniciar sesion:    USUARIO --> admin    CONTRASEÑA --> admin");
     //Funcion para reciclar mensajes
     const msg = (mensaje, type) => {
         if (type == "correcto") {
