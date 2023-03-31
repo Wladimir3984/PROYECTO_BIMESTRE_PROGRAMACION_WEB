@@ -1,129 +1,15 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>GAMESITE</title>
-    <!-- Enlaces a hojas de estilo CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-      crossorigin="anonymous"
-    />
-    <link href="static/css/index.css" rel="stylesheet" />
-    <style>
-      .dropdown-menu-center {
-        left: 50% !important;
-        right: auto !important;
-        text-align: center !important;
-        transform: translate(-50%, 0) !important;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <nav
-        class="navbar navbar-expand-md navbar-dark bg-dark"
-        style="padding-left: 1rem"
-      >
-        <a class="navbar-brand" href="index.html">GameSite</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle active"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Categorías
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item" href="templates/terror.html"
-                    >Terror</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="templates/guerra.html"
-                    >Guerra</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="templates/aventura.html"
-                    >Aventura</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="templates/rpg.html">RPG</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="templates/plataforma.html"
-                    >Plataforma</a
-                  >
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="templates/formulario.html"
-                >Unete</a
-              >
-            </li>
-          </ul>
-          <ul class="navbar-nav ms-auto pe-2">
-            <span class="d-none" id="admin-dd">
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  >
-                  ADMIN
-                </a>
-                <ul
-                  class="dropdown-menu dropdown-menu-center"
-                  aria-labelledby="navbarDropdown"
-                  >
-                  <li>
-                    <a class="dropdown-item" href="#"
-                      >Configuración de catalogo</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Analisis de datos</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Monitorear usuarios</a>
-                  </li>
-                </ul>
-              </li>
-            </span>
-            <li class="nav-item">
-              <a class="nav-link active" href="templates/loggin.html"
-                ><span id="admin-status"></span></a
-              >
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
+{% extends 'app/base.html' %}
+{% load static %}
 
-    <main>
+{% block css %}
+<link rel="stylesheet" href="{% static 'app/css/index.css' %}" />
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'app/js/chargeAdmin.js' %}"></script>
+{% endblock %}
+
+{% block main %}
       <section id="categorias">
         <div
           class="container-fluid"
@@ -174,7 +60,7 @@
                   <div class="carousel-item active">
                     <a href="templates/terror.html"
                       ><img
-                        src="img/terror.png"
+                         src="{% static 'app/img/terror.png' %}"
                         class="d-block w-100 catImg"
                         alt="..."
                     /></a>
@@ -186,7 +72,7 @@
                   <div class="carousel-item">
                     <a href="templates/aventura.html"
                       ><img
-                        src="img/fantasia.jpg"
+                        src="{% static 'app/img/fantasia.jpg' %}"
                         class="d-block w-100"
                         alt="..."
                     /></a>
@@ -198,7 +84,7 @@
                   <div class="carousel-item">
                     <a href="templates/guerra.html"
                       ><img
-                        src="img/guerra.jpg"
+                        src="{% static 'app/img/guerra.jpg' %}"
                         class="d-block w-100"
                         alt="..."
                     /></a>
@@ -209,7 +95,7 @@
                   </div>
                   <div class="carousel-item">
                     <a href="templates/rpg.html"
-                      ><img src="img/rpg.jpg" class="d-block w-100" alt="..."
+                      ><img src="{% static 'app/img/rpg.jpg' %}" class="d-block w-100" alt="..."
                     /></a>
                     <div class="carousel-caption d-none d-md-block">
                       <h1>RPG</h1>
@@ -219,7 +105,7 @@
                   <div class="carousel-item">
                     <a href="templates/plataforma.html"
                       ><img
-                        src="img/plataforma.png"
+                        src="{% static 'app/img/plataforma.png' %}"
                         class="d-block w-100"
                         alt="..."
                     /></a>
@@ -276,13 +162,5 @@
           </div>
         </div>
       </section>
-    </main>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-      crossorigin="anonymous"
-    ></script>
-    <script src="static/js/chargeAdmin.js"></script>
-  </body>
-</html>
+{% endblock %}
+
