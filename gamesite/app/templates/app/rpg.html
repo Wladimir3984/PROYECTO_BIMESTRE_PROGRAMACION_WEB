@@ -1,0 +1,46 @@
+
+{% extends 'app/base_categoria.html' %}
+{% load static %}
+
+{% block title %} Rpg {% endblock %}
+
+{% block games %}
+
+  <div class="col-12 col-md-4 col-lg-3 mt-3 me-3">
+    <div class="card custom-card" >
+      <img src = "{% static 'app/img/rpg/er.jpg' %}" />
+      <div class="card-body">
+        <h5 class="card-title">Elden Ring</h5>
+        <p class="card-text">
+          Elden Ring es un videojuego de rol de acción desarrollado
+          por FromSoftware y publicado por Bandai Namco Entertainment.
+          El videojuego surge de una colaboración entre el director y
+          diseñador Hidetaka Miyazaki y el novelista de fantasía
+          George R. R. Martin.
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Precio: $7.500</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-12 col-md-4 col-lg-3 mt-3 me-3">
+    <div class="card custom-card" >
+      <img src = "{% static 'app/img/rpg/som.jpg' %}"/>
+      <div class="card-body">
+        <h5 class="card-title">Middle-earth: Shadow of Mordor</h5>
+        <p class="card-text">
+          La Tierra Media: Sombras de Mordor es un videojuego de rol y
+          acción en tercera persona desarrollado por Monolith
+          Productions y distribuido por Warner Bros. Interactive
+          Entertainment para Windows, xbox 360, xbox one, playstation
+          3 y playstation 4. El título está ambientado en el
+          legendarium creado por J. R. R.​​
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Precio: $4.500</li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'app/base_categoria.html' %}
+{% load static %}
+
+{% block title %} Guerra {% endblock %}
+
+{% block games %}
+
+  <div class="col-12 col-md-4 col-lg-3 mt-3 me-3">
+    <div class="card custom-card" >
+      <img src = "{% static 'app/img/guerra/cod.jpg' %}"/>
+      <div class="card-body">
+        <h5 class="card-title">cod warzone</h5>
+        <p class="card-text">
+          Call of Duty: Warzone es un videojuego de disparos en
+          primera persona, perteneciente al género Battle royale
+          gratuito, lanzado el 10 de marzo de 2020 para PlayStation 4,
+          PlayStation 5, Xbox One, Xbox Series X|S y Microsoft
+          Windows.
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Precio: $5.500</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-12 col-md-4 col-lg-3 mt-3 me-3">
+    <div class="card custom-card" >
+      <img src = "{% static 'app/img/guerra/snp.jpg' %}"/>
+      <div class="card-body">
+        <h5 class="card-title">sniper elite 4</h5>
+        <p class="card-text">
+          Sniper Elite 4 es un videojuego de táctica en tercera
+          persona diseñado por Rebellion Developments.​ Como la
+          secuela directa de Sniper Elite III, el juego fue lanzado
+          para Microsoft Windows, PlayStation 4 y Xbox One el 14 de
+          febrero de 2017.
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Precio: $3.500</li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}

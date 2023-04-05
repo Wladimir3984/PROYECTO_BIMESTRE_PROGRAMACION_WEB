@@ -73,7 +73,7 @@ $(document).ready(function () {
         if (redireccionar) {
             //mandar alerta de inicio de sesion exitoso y que será redireccionado
             alert("Inicio de sesion exitoso, sera redireccionado a la pagina principal");
-            window.location.href = "../index.html";
+            //window.location.href = "index.html";
             }
     });
 });

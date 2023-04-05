@@ -1,0 +1,23 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'app/css/catalogo.css' %}" />
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'app/js/chargeAdmin.js' %}"></script>
+{% endblock %}
+
+{% block main %}
+      <div id="catalogo">
+        <div class="container-fluid">
+          <div class="row d-flex justify-content-md-center">
+            {% block games %}
+            {% endblock %}
+          </div>
+        </div>
+      </div>
+{% endblock %}
+

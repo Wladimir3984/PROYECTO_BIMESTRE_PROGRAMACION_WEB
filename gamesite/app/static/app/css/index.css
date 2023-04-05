@@ -12,6 +12,13 @@ main {
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+.dropdown-menu-center {
+  left: 50% !important;
+  right: auto !important;
+  text-align: center !important;
+  transform: translate(-50%, 0) !important;
+}
+
 /* responsive section */
 
 @media screen and (min-width: 1280px) { /* en pantallas mas grandes de disminuye el carrusel para mostrar mas contenido */

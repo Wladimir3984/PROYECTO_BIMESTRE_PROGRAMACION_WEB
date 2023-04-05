@@ -10,12 +10,12 @@ function updateSpanVisibility() {
     $("#admin-status").closest("a").click(function(event) {
       // Evitar que el enlace siga su comportamiento predeterminado
       event.preventDefault();
-      
+
       // Borrar el almacenamiento local
       localStorage.clear();
-      
+
       // Redirigir a la página de inicio de sesión
-      
+
       // Obtener la ruta actual
       var currentPath = window.location.pathname;
 
@@ -26,7 +26,7 @@ function updateSpanVisibility() {
       } else {
         loginPath = "templates/loggin.html";
       }
-      window.location.href = loginPath;
+      //window.location.href = loginPath;
     });
   } else {
     $("#admin-dd").addClass("d-none");
