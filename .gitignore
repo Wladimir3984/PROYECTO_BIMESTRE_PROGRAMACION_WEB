@@ -2,5 +2,4 @@ gamesite/Dockerfile
 gamesite/docker-compose.yml
 .env
 .venv
-sql/
 
