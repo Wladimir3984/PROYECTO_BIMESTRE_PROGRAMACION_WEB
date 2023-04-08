@@ -1,0 +1,11 @@
+INSERT INTO app_categoria VALUES(1,'AVENTURA');
+INSERT INTO app_categoria VALUES(2,'GUERRA');
+INSERT INTO app_categoria VALUES(3,'PLATAFORMA');
+INSERT INTO app_categoria VALUES(4,'TERROR');
+INSERT INTO app_categoria VALUES(5,'RPG');
+
+INSERT INTO app_metodopago VALUES(1,'DEBITO');
+INSERT INTO app_metodopago VALUES(2,'CREDTIO');
+INSERT INTO app_metodopago VALUES(3,'TRANSFERENCIA');
+insert into app_juego(ID_JUEGO, NOMBRE, PRECIO_VENTA, STOCK, DESCRIPCION, DISPONIBLE, ID_CATEGORIA_ID)
+values(1,'wor',5900,5,'un juego','y',4);
