@@ -1,5 +1,4 @@
 from django.shortcuts import render
-
 # Create your views here.
 
 def index(request):
@@ -18,4 +17,3 @@ def loggin(request):
     return render(request, 'app/loggin.html')
 def formulario(request):
     return render(request, 'app/formulario.html')
-
