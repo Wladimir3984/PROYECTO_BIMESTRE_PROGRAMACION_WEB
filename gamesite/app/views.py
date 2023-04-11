@@ -4,22 +4,42 @@ from .forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login
 # Create your views here.
 
+
 def index(request):
-    return render(request, 'app/index.html')
+    is_supervisor = request.user.groups.filter(name='supervisor').exists()
+    is_superuser = request.user.is_superuser
+    context = {'is_supervisor': is_supervisor, 'is_superuser': is_superuser}
+    return render(request, 'app/index.html', context)
+
 def aventura(request):
-    return render(request, 'app/aventura.html')
+    is_supervisor = request.user.groups.filter(name='supervisor').exists()
+    is_superuser = request.user.is_superuser
+    context = {'is_supervisor': is_supervisor, 'is_superuser': is_superuser}
+    return render(request, 'app/aventura.html', context)
+
 def plataforma(request):
-    return render(request, 'app/plataforma.html')
+    is_supervisor = request.user.groups.filter(name='supervisor').exists()
+    is_superuser = request.user.is_superuser
+    context = {'is_supervisor': is_supervisor, 'is_superuser': is_superuser}
+    return render(request, 'app/plataforma.html', context)
+
 def guerra(request):
-    return render(request, 'app/guerra.html')
+    is_supervisor = request.user.groups.filter(name='supervisor').exists()
+    is_superuser = request.user.is_superuser
+    context = {'is_supervisor': is_supervisor, 'is_superuser': is_superuser}
+    return render(request, 'app/guerra.html', context)
+
 def terror(request):
-    return render(request, 'app/terror.html')
+    is_supervisor = request.user.groups.filter(name='supervisor').exists()
+    is_superuser = request.user.is_superuser
+    context = {'is_supervisor': is_supervisor, 'is_superuser': is_superuser}
+    return render(request, 'app/terror.html', context)
+
 def rpg(request):
-    return render(request, 'app/rpg.html')
-def loggin(request):
-    return render(request, 'app/loggin.html')
-def formulario(request):
-    return render(request, 'app/formulario.html')
+    is_supervisor = request.user.groups.filter(name='supervisor').exists()
+    is_superuser = request.user.is_superuser
+    context = {'is_supervisor': is_supervisor, 'is_superuser': is_superuser}
+    return render(request, 'app/rpg.html', context)
 def registro(request):
     data = {
         'form': CustomUserCreationForm()
