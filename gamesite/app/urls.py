@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import index, aventura, plataforma, guerra, terror, rpg, loggin, formulario
+from .views import index, aventura, plataforma, guerra, terror, rpg, loggin, formulario, registro
 
 urlpatterns = [
     path('', index, name='index'),
@@ -12,5 +12,7 @@ urlpatterns = [
     path('catalogo/guerra/', guerra, name='guerra'),
     path('catalogo/terror/', terror, name='terror'),
     path('catalogo/rpg/', rpg, name='rpg'),
+    #registro
+    path('registro/', registro, name='registro'),
 ]
 

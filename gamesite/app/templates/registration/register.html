@@ -7,23 +7,21 @@
 {% endblock %}
 
 {% block main %}
-<div class="container mt-4">
+<div class="container-fluid mt-4">
   <div class="row mt-5">
     <div class="col-4"></div>
     <div class="col-4 text-center">
       <form action="" method="post">
         <div class="card" style="width: 18rem">
           <div class="card-body">
-            <h5 class="card-title">Iniciar sesión</h5>
-            {% csrf_token %}
-            {{ form | crispy }}
+            <h5 class="card-title">Registrate</h5>
+            {% csrf_token %} {{ form | crispy }}
             <div>
-              <button type="submit" class="btn btn-primary mt-2">Iniciar sesión</button>
+              <button type="submit" class="btn btn-primary mt-2">registrarse</button>
             </div>
-            <a href="{% url 'registro' %}">Registrarse</a>
+            <a href="{% url 'login' %}">¿Ya tienes una cuenta?</a>
           </div>
         </div>
-
       </form>
     </div>
     <div class="col-4"></div>
