@@ -12,15 +12,15 @@
     <div class="col-4"></div>
     <div class="col-4 text-center">
       <form action="" method="post">
-        <div class="card" style="width: 18rem">
+        <div class="card" style="width: 100%">
           <div class="card-body">
             <h5 class="card-title">Iniciar sesión</h5>
             {% csrf_token %}
             {{ form | crispy }}
-            <div>
-              <button type="submit" class="btn btn-primary mt-2">Iniciar sesión</button>
+            <div class="d-grid gap-2 col-6 mx-auto">
+              <button class="btn btn-primary" type="submit">Iniciar Sesión</button>
             </div>
-            <a href="{% url 'registro' %}">Registrarse</a>
+            <a href="{% url 'registro' %}">¿No tienes una cuenta?</a>
           </div>
         </div>
 
