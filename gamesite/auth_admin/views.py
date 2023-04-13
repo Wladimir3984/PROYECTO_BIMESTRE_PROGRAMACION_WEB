@@ -4,7 +4,7 @@ from app.models import Juego
 # Create your views here.
 
 def agregar_juego(request):
-    is_supervisor = request.user.groups.filter(name='supervisor').exists()
+    is_supervisor = request.user.has_perm('auth.rol_supervisor')
     is_superuser = request.user.is_superuser
     if not is_supervisor and not is_superuser:
         return render(request, 'app/index.html')
@@ -24,7 +24,7 @@ def agregar_juego(request):
         return render(request, 'auth_admin/juegos_crud/agregar.html', data)
 
 def listar_juegos(request):
-    is_supervisor = request.user.groups.filter(name='supervisor').exists()
+    is_supervisor = request.user.has_perm('auth.rol_supervisor')
     is_superuser = request.user.is_superuser
     if not is_supervisor and not is_superuser:
         return render(request, 'app/index.html')

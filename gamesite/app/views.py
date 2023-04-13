@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from .forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import Permission
 # Create your views here.
 
 
@@ -47,7 +48,13 @@ def registro(request):
     if request.method == 'POST':
         formulario = CustomUserCreationForm(data=request.POST)
         if formulario.is_valid():
-            formulario.save()
+            user = formulario.save()
+            # Get the existing permission
+            permission = Permission.objects.get(codename='rol_user')
+
+            # Add the permission to the user
+            user.user_permissions.add(permission)
+
             user = authenticate(username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password1"])
             login(request, user)
             return redirect(to="index")
