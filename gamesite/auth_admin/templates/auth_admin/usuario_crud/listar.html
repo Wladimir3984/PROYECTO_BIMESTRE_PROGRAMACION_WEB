@@ -1,0 +1,41 @@
+{% extends 'app/base.html' %}
+
+{% block main %}
+
+<div class="card">
+    <div class="card-body">
+        <h2>Lista de usuarios</h2>
+        <hr>
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>id_usuario</th>
+                <th>nombre</th>
+                <th>ap_paterno</th>
+                <th>ap_materno</th> 
+                <th>f_nacimiento</th>
+                <th>correo</th>
+                <th>direccion</th>
+                <th>usuario</th>
+                <th>contrasenia</th>
+                <th>is_admin</th>
+            </tr>
+            {% for p in juegos %}
+            <tr>
+                <td>{{ p.id_usuario }}</td>
+                <td>{{ p.nombre }}</td>
+                <td>{{ p.ap_paterno }}</td>
+                <td>{{ p.ap_materno }}</td>
+                <td>{{ p.f_nacimiento }}</td>
+                <td>{{ p.correo }}</td>
+                <td>{{ p.direccion }}</td>
+                <td>{{ p.usuario }}</td>
+                <td>{{ p.contrasenia }}</td>
+                <td>{{ p.is_admin }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}

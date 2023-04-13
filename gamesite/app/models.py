@@ -1,11 +1,14 @@
 from django.db import models
 # Create your models here.
 
+
 class Categoria(models.Model):
     id_categoria = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=25)
+
     def __str__(self):
         return self.nombre
+
 
 class DetalleVenta(models.Model):
     id_detalle_venta = models.AutoField(primary_key=True)
@@ -14,6 +17,10 @@ class DetalleVenta(models.Model):
     cantidad = models.IntegerField()
     precio = models.IntegerField()
     descuento = models.IntegerField()
+
+    def __str__(self):
+        return self.id_detalle_venta
+
 
 class Juego(models.Model):
     id_juego = models.AutoField(primary_key=True)
@@ -24,9 +31,17 @@ class Juego(models.Model):
     descripcion = models.CharField(max_length=225)
     disponible = models.CharField(max_length=1)
 
+    def __str__(self):
+        return self.nombre
+
+
 class MetodoPago(models.Model):
     id_metodo_pago = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=15)
+
+    def __str__(self):
+        return self.nombre
+
 
 class Usuario(models.Model):
     id_usuario = models.AutoField(primary_key=True)
@@ -40,6 +55,10 @@ class Usuario(models.Model):
     contrasenia = models.CharField(max_length=100)
     is_admin = models.CharField(max_length=1)
 
+    def __str__(self):
+        return self.nombre
+
+
 class Venta(models.Model):
     id_venta = models.AutoField(primary_key=True)
     id_metodo_pago = models.ForeignKey(MetodoPago, on_delete=models.CASCADE)
@@ -48,3 +67,5 @@ class Venta(models.Model):
     total = models.IntegerField()
     fecha = models.DateField()
 
+    def __str__(self):
+        return self.id_venta
