@@ -63,14 +63,64 @@
                     </li>
                   </ul>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="{% url 'formulario' %}">Unete</a>
-                </li>
               </ul>
               <ul class="navbar-nav ms-auto pe-2">
+                {% if perms.auth.rol_supervisor or is_superuser %}
+
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link dropdown-toggle"
+                      href="#"
+                      id="navbarDropdown"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                      >
+                      ADMIN PANEL
+                    </a>
+                    <ul
+                      class="dropdown-menu dropdown-menu-center"
+                      aria-labelledby="navbarDropdown"
+                      >
+                      <li>
+                        <a class="dropdown-item" href="#"
+                                                 >Agregar catalogo</a
+                                               >
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">Ver catalogo</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">Actualizar catalogo</a>
+                      </li>
+                    </ul>
+                  </li>
+
+                  {% endif %}
+
+
+                  {% if user.is_authenticated %}
+                  {% if perms.auth.rol_user and not user.is_superuser and not perms.auth.rol_supervisor %}
+                  <li class="nav-item">
+                     <a class="nav-link active" href="#">Carrito</a>
+                   </li>
+                   {% endif %}}
+
+                  <li class="nav-item">
+                        <a class="nav-link active" href="#">@{{ user.username }}</a>
+                  </li>
+
+                  <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'logout' %}">Cerrar Sesión</a>
+                  </li>
+
+               {% else %}
                 <li class="nav-item">
-                  <a class="nav-link active" href="{% url 'loggin' %}">Login</a>
+                  <a class="nav-link active" href="{% url 'login' %}">Iniciar Sesión</a>
                 </li>
+
+               {% endif %}
+
               </ul>
             </div>
           </nav>
