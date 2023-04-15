@@ -56,4 +56,4 @@ class Venta(models.Model):
     fechaHora = models.DateTimeField()
 
     def __str__(self):
-        return self.id_venta
+        return str(self.id_venta)
