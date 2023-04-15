@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 # Create your models here.
 
 
@@ -23,7 +24,7 @@ class DetalleVenta(models.Model):
 class Juego(models.Model):
     id_juego = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=25)
-    precio = models.IntegerField()
+    precio_venta = models.IntegerField()
     stock = models.IntegerField()
     id_categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     descripcion = models.TextField()
@@ -59,7 +60,7 @@ class Venta(models.Model):
     id_venta = models.AutoField(primary_key=True)
     id_metodo_pago = models.ForeignKey(MetodoPago, on_delete=models.CASCADE)
     id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    fechaHora = models.DateTimeField()
+    fechaHora = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.id_venta
