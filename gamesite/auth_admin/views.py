@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import InsertGameForm, InsertUserForm
 from app.models import Juego, Usuario
+from django.contrib.auth import get_user_model
 # Create your views here.
 
 
@@ -26,17 +27,17 @@ def agregar_juego(request):
 
 
 def listar_juegos(request):
-
     is_supervisor = request.user.has_perm('auth.rol_supervisor')
     is_superuser = request.user.is_superuser
     if not is_supervisor and not is_superuser:
         return render(request, 'app/index.html')
     else:
-      juegos = Juego.objects.all()
-      data = {
-          'juegos': juegos
-      }
-      return render(request, 'auth_admin/juegos_crud/listar.html', data)
+        juegos = Juego.objects.all()
+        data = {
+            'juegos': juegos
+        }
+        return render(request, 'auth_admin/juegos_crud/listar.html', data)
+
 
 def modificar_usuario(request, id):
     usuario = get_object_or_404(Usuario, id_usuario=id)
@@ -52,9 +53,10 @@ def modificar_usuario(request, id):
             data["mensaje"] = "modificado correctamente"
             return redirect(to="listar_usuarios")
         else:
-            data['mensaje'] = "Error al agregar el juego"
+            data['mensaje'] = "Error al agregar el usuario"
             data['insert_form'] = insert_form
     return render(request, 'auth_admin/usuario_crud/modificar.html', data)
+
 
 def listar_usuarios(request):
     usuarios = Usuario.objects.all()
@@ -63,3 +65,27 @@ def listar_usuarios(request):
     }
     return render(request, 'auth_admin/usuario_crud/listar.html', data)
 
+def modificarJuego(request, id):
+    juego = get_object_or_404(Juego, id_juego = id)
+    
+    data = {
+        'form': InsertGameForm(instance=juego)
+    }
+    if request.method == 'POST':
+        insert_form = InsertGameForm(data=request.POST, instance=juego, files=request.FILES)
+        if insert_form.is_valid():
+            insert_form.save()
+            data['mensaje'] = "Modificado correctamente"
+            return redirect(to='listar_juegos')
+        else:
+            data['mensaje'] = "Error al agregar el juego"
+            data['insert_form'] = insert_form
+    return render(request,'auth_admin/juegos_crud/modificar.html',data)
+
+def eliminarJuego(request, id):
+    try:
+        juego = Juego.objects.get(id_juego = id)
+        juego.delete()
+    except Exception as e:
+        print(e)
+    return render(request, 'auth_admin/juegos_crud/listar.html')
