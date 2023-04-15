@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -40,19 +41,12 @@ class MetodoPago(models.Model):
         return self.nombre
 
 
-class Usuario(models.Model):
-    id_usuario = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=25)
-    ap_paterno = models.CharField(max_length=25)
-    ap_materno = models.CharField(max_length=25)
+class Usuario(User):
     f_nacimiento = models.DateField()
-    correo = models.EmailField(max_length=254)
     direccion = models.TextField()
-    usuario = models.CharField(max_length=25)
-    contrasenia = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.nombre
+        return self.username
 
 
 class Venta(models.Model):

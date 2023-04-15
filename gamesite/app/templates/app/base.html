@@ -20,6 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DynaPuff&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'app/css/catalogo.css' %}" />
 
     <style>
       * {
@@ -27,6 +28,9 @@
       text-align: center;
       font-size: 1rem;
         }
+      nav > div > a {
+        backdrop-filter: blur(10px);
+      }
 
     </style>
     {% block css %} {% endblock %}

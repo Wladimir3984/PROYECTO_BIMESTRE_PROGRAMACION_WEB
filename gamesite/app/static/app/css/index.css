@@ -5,8 +5,9 @@
   transform: translate(-50%, 0) !important;
 }
 
-.titulo_custom {
+.titulo_custom, .parrafo_custom {
   font-family: 'Rubik Dirt', cursive;
+  color: white;
 }
 
 /* responsive section */
