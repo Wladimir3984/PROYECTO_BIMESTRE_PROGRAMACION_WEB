@@ -128,12 +128,15 @@
                    </li>
                    {% endif %}}
 
-                  <li class="nav-item">
-                        <a class="nav-link active" href="#">@{{ user.username }}</a>
-                  </li>
-
-                  <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'logout' %}">Cerrar Sesión</a>
+                  <li class="nav-item dropdown me-5">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          @{{ user.username }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-center">
+                          <li><a class="dropdown-item" href="/password_change">Cambiar contraseña</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a></li>
+                        </ul>
                   </li>
 
                {% else %}
