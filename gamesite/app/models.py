@@ -60,7 +60,7 @@ class Venta(models.Model):
     id_venta = models.AutoField(primary_key=True)
     id_metodo_pago = models.ForeignKey(MetodoPago, on_delete=models.CASCADE)
     id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    fechaHora = models.DateTimeField(auto_now_add=True)
+    fecha = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.id_venta
