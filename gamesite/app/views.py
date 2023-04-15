@@ -3,8 +3,16 @@ from django.shortcuts import redirect
 from .forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import Permission
+#cambiar contraseña
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.views import PasswordChangeView
+
 # Create your views here.
 
+class MyPasswordChangeView(PasswordChangeView):
+    form_class = PasswordChangeForm
+    template_name = 'app/password_change_form.html'
+    success_url = '/'
 
 def index(request):
     is_supervisor = request.user.groups.filter(name='supervisor').exists()
