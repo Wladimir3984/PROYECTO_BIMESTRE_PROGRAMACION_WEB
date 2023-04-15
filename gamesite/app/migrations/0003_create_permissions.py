@@ -21,7 +21,7 @@ def create_permission(apps, schema_editor):
 
 class Migration(migrations.Migration):
 
-    dependencies = [('app', '0003_insert_data'),
+    dependencies = [('app', '0002_insert_data'),
     ]
 
     operations = [
