@@ -4,27 +4,36 @@
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'app/css/catalogo.css' %}" />
+<style>
+    #registro{
+      width: 100%;
+      background:white;
+      border-radius: 10px;
+      padding: 20px;
+    }
+    label{
+      font-size: 1rem;
+    }
+</style>
 {% endblock %}
 
 {% block main %}
 <div class="container-fluid mt-4">
   <div class="row mt-5">
-    <div class="col-4"></div>
-    <div class="col-4 text-center">
+    <div class="col col-md-3"></div>
+    <div class="col-12 col-md-6 text-center">
       <form action="" method="post">
-        <div class="card" style="width: 100%">
-          <div class="card-body">
-            <h5 class="card-title">Registrate</h5>
+        <div id="registro">
+            <h3 class="mb-3">Registrate</h3>
             {% csrf_token %} {{ form | crispy }}
             <div class="d-grid gap-2 col-6 mx-auto">
               <button class="btn btn-primary" type="submit">Registrate</button>
             </div>
             <a href="{% url 'login' %}">¿Ya tienes una cuenta?</a>
-          </div>
         </div>
       </form>
     </div>
-    <div class="col-4"></div>
+    <div class="col col-md-3"></div>
   </div>
 </div>
 {% endblock %}

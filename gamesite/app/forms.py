@@ -4,7 +4,7 @@ from django import forms
 
 class CustomUserCreationForm(UserCreationForm):
     f_nacimiento = forms.DateField(input_formats=['%d/%m/%Y'])
-    direccion = forms.CharField(widget=forms.Textarea)
+    direccion = forms.CharField(widget=forms.Textarea(attrs={'rows': 2}))
 
     class Meta:
         model = Usuario
