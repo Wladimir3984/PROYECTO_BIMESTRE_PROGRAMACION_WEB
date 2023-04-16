@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +24,7 @@
                             </h6>
                             <form id="insert_game" action="" method="post">
                                 {% csrf_token %}
-                                {{insert_form}}
+                                {{ insert_form | crispy }}
                                 <div class="d-grid gap-2">
                                     <button class="btn btn-primary" type="submit">Agregar</button>
                                     <button class="btn btn-primary" type="reset" id="btnReset">Limpiar</button>

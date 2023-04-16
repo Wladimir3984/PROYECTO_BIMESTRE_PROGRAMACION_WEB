@@ -10,9 +10,9 @@ urlpatterns = [
     path('usroetnu2342342348rnteoenturoeuo214/', listar_juegos, name='listar_juegos'),
     path('usroetnu2342342348rnteoenturoeuo214/<id>/', modificarJuego, name='modificarJuego'),
     
-    path('usroetnu2342342348rnteoenturoeuo215/', listar_usuarios, name='listar_usuarios'),
-    path('usroetnu2342342348rnteoenturoeuo215/<id>/', modificar_usuario, name='modificar_usuario'),
-    path('usroetnu2342342348rnteoenturoeuo216/', agregar_usuario, name='agregar_usuario'),
-    path('usroetnu2342342348rnteoenturoeuo216/<id>/', eliminarUsuario, name='eliminarUsuario'),
+    path('usroetnu2342342348rnteoenturoeuo215/', agregar_usuario, name='agregar_usuario'),
+    path('usroetnu2342342348rnteoenturoeuo215/<id>/', eliminarUsuario, name='eliminarUsuario'),
+    path('usroetnu2342342348rnteoenturoeuo216/', listar_usuarios, name='listar_usuarios'),
+    path('usroetnu2342342348rnteoenturoeuo216/<id>/', modificar_usuario, name='modificar_usuario'),
 ]
 
