@@ -4,17 +4,28 @@
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'app/css/catalogo.css' %}" />
+
+<style>
+    #loggin{
+      width: 100%;
+      background:white;
+      border-radius: 10px;
+      padding: 20px;
+    }
+    label{
+      font-size: 1rem;
+    }
+</style>
 {% endblock %}
 
 {% block main %}
 <div class="container mt-4">
   <div class="row mt-5">
-    <div class="col-4"></div>
-    <div class="col-4 text-center">
+    <div class="col col-md-4"></div>
+    <div class="col-12 col-md-4 text-center">
       <form action="" method="post">
-        <div class="card" style="width: 100%">
-          <div class="card-body">
-            <h5 class="card-title">Iniciar sesión</h5>
+          <div id="loggin">
+            <h5 class="mb-3">Iniciar sesión</h5>
             {% csrf_token %}
             {{ form | crispy }}
             <div class="d-grid gap-2 col-6 mx-auto">
@@ -22,11 +33,10 @@
             </div>
             <a href="{% url 'registro' %}">¿No tienes una cuenta?</a>
           </div>
-        </div>
 
       </form>
     </div>
-    <div class="col-4"></div>
+    <div class="col col-md-4"></div>
   </div>
 </div>
 {% endblock %}
