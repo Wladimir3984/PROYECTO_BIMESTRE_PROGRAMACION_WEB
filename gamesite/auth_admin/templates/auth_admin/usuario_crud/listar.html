@@ -8,29 +8,27 @@
         <hr>
         <table class="table table-striped table-hover">
             <tr>
-                <th>id_usuario</th>
-                <th>nombre</th>
-                <th>ap_paterno</th>
-                <th>ap_materno</th> 
-                <th>f_nacimiento</th>
-                <th>correo</th>
-                <th>direccion</th>
-                <th>usuario</th>
-                <th>contrasenia</th>
-                <th>is_admin</th>
+                <th>ID</th>
+                <th>NOMBRE</th>
+                <th>APELLIDO</th>
+                <th>FECHA NACIMIENTO</th>
+                <th>EMAIL</th>
+                <th>DIRECCION</th>
+                <th>USERNAME</th>
+                <th>STAFF</th>
+                <th>SUPERUSER</th>
             </tr>
             {% for p in juegos %}
             <tr>
-                <td>{{ p.id_usuario }}</td>
-                <td>{{ p.nombre }}</td>
-                <td>{{ p.ap_paterno }}</td>
-                <td>{{ p.ap_materno }}</td>
+                <td>{{ p.id }}</td>
+                <td>{{ p.first_name }}</td>
+                <td>{{ p.last_name }}</td>
                 <td>{{ p.f_nacimiento }}</td>
-                <td>{{ p.correo }}</td>
+                <td>{{ p.email }}</td>
                 <td>{{ p.direccion }}</td>
-                <td>{{ p.usuario }}</td>
-                <td>{{ p.contrasenia }}</td>
-                <td>{{ p.is_admin }}</td>
+                <td>{{ p.username }}</td>
+                <td>{{ p.is_staff }}</td>
+                <td>{{ p.is_superuser }}</td>
             </tr>
             {% endfor %}
         </table>
