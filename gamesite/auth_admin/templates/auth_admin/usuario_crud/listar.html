@@ -1,7 +1,6 @@
 {% extends 'app/base.html' %}
 {% load crispy_forms_tags %}
 {% block main %}
-
 <div class="card">
     <div class="card-body">
         <h2>Lista de usuarios</h2>
@@ -16,7 +15,6 @@
                 <th>DIRECCION</th>
                 <th>USERNAME</th>
                 <th>STAFF</th>
-                <th>SUPERUSER</th>
             </tr>
             {% for p in juegos %}
             <tr>
@@ -28,12 +26,9 @@
                 <td>{{ p.direccion }}</td>
                 <td>{{ p.username }}</td>
                 <td>{{ p.is_staff }}</td>
-                <td>{{ p.is_superuser }}</td>
             </tr>
             {% endfor %}
         </table>
     </div>
 </div>
-
-
 {% endblock %}
