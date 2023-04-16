@@ -105,15 +105,16 @@
                       aria-labelledby="navbarDropdown"
                       >
                       <li>
-                        <a class="dropdown-item" href="/oneturoetu234tnr4234rntrt234rnt234ntroeturoetur884oetnun/usroetnu2342342348rnteoenturoeuo213"
-                                                 >Agregar catalogo</a
-                                               >
+                        <a class="dropdown-item" href="/oneturoetu234tnr4234rntrt234rnt234ntroeturoetur884oetnun/usroetnu2342342348rnteoenturoeuo213">Agregar Juego</a>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="/oneturoetu234tnr4234rntrt234rnt234ntroeturoetur884oetnun/usroetnu2342342348rnteoenturoeuo214">Ver catalogo</a>
+                        <a class="dropdown-item" href="/oneturoetu234tnr4234rntrt234rnt234ntroeturoetur884oetnun/usroetnu2342342348rnteoenturoeuo214">Lista de Juegos</a>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="/oneturoetu234tnr4234rntrt234rnt234ntroeturoetur884oetnun/usroetnu2342342348rnteoenturoeuo215">Ver usuarios</a>
+                        <a class="dropdown-item" href="/oneturoetu234tnr4234rntrt234rnt234ntroeturoetur884oetnun/usroetnu2342342348rnteoenturoeuo215">Agregar usuario</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="/oneturoetu234tnr4234rntrt234rnt234ntroeturoetur884oetnun/usroetnu2342342348rnteoenturoeuo216">Lista de usuarios</a>
                       </li>
                     </ul>
                   </li>
@@ -124,9 +125,9 @@
                   {% if user.is_authenticated %}
                   {% if perms.auth.rol_user and not user.is_superuser and not perms.auth.rol_supervisor %}
                   <li class="nav-item">
-                     <a class="nav-link active" href="#">Carrito</a>
-                   </li>
-                   {% endif %}}
+                    <a class="nav-link active" href="#">Carrito</a>
+                  </li>
+                  {% endif %}}
 
                   <li class="nav-item dropdown me-5">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -139,12 +140,12 @@
                         </ul>
                   </li>
 
-               {% else %}
+                {% else %}
                 <li class="nav-item">
                   <a class="nav-link active" href="{% url 'login' %}">Iniciar Sesión</a>
                 </li>
 
-               {% endif %}
+                {% endif %}
 
               </ul>
             </div>

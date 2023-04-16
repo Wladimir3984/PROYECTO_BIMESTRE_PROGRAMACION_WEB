@@ -6,12 +6,12 @@
         <div class="col-12 col-md-6 col-lg-4">
             <div class="card" style="width: 18rem">
                 <div class="card-body">
-                    <h5 class="card-title">Agrega videojuegos</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">insterta nuevos juegos para ofrecer a los usuarios
+                    <h5 class="card-title">Agrega Usuario</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Insterta nuevos Usuarios
                     </h6>
                     <form id="insert_game" action="" method="post">
                         {% csrf_token %}
-                        {{ insert_form | crispy }}
+                        {{insert_form | crispy }}
                         <div class="d-grid gap-2">
                             <button class="btn btn-primary" type="submit">Agregar</button>
                             <button class="btn btn-primary" type="reset" id="btnReset">Limpiar</button>
