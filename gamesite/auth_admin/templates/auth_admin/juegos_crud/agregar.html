@@ -1,0 +1,42 @@
+{% extends 'app/base.html' %}
+{% load crispy_forms_tags %}
+{% block css %}
+    <style>
+        #form{
+          width: 100%;
+          background:white;
+          border-radius: 10px;
+          padding: 20px;
+        }
+        label{
+          font-size: 1rem;
+        }
+    </style>
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col col-md-2 col-lg-4"></div>
+        <div class="col-12 col-md-8 col-lg-4">
+            <div id="form">
+                    <h5 class="mb-3">Agrega videojuegos</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">insterta nuevos juegos para ofrecer a los usuarios
+                    </h6>
+                    <form id="insert_game" action="" method="post">
+                        {% csrf_token %}
+                        {{ insert_form | crispy }}
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" type="submit">Agregar</button>
+                            <button class="btn btn-primary" type="reset" id="btnReset">Limpiar</button>
+                        </div>
+                    </form>
+                    <div class="alert alert-primary" role="alert" id="alert">
+                        {{mensaje}}
+                    </div>
+            </div>
+        </div>
+        <div class="col col-md-2 col-lg-4"></div>
+    </div>
+</div>
+{% endblock %}

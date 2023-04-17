@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [('app', '0002_detalleventa_metodopago_usuario_venta_juego'),
+    dependencies = [('app', '0001_initial'),
     ]
 
     operations = [

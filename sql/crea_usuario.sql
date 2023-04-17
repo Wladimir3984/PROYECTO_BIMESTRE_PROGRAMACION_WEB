@@ -1,5 +1,7 @@
 -- La siguiente linea la debes descomentar SI Y SOLO SI tienes instalado el Oracle 18c/ sin esto no me sirve y tengo 21c
 ALTER SESSION SET "_ORACLE_SCRIPT"=true; --comentar si te da problemas
+--PARA BORRAR EL USUARIO EJECUTAR EL SIGUIENTE SCRIPT EN USUARIO SYSTEM DE SQL
+--DROP USER USR_GAMESITE CASCADE;
 -- USER SQL
 CREATE USER USR_GAMESITE IDENTIFIED BY duoc123456
 --DEFAULT TABLESPACE "USERS"

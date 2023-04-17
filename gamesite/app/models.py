@@ -1,19 +1,26 @@
 from django.db import models
+from django.utils import timezone
+from django.contrib.auth.models import User
 # Create your models here.
+
 
 class Categoria(models.Model):
     id_categoria = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=25)
+
     def __str__(self):
         return self.nombre
+
 
 class DetalleVenta(models.Model):
     id_detalle_venta = models.AutoField(primary_key=True)
     id_venta = models.IntegerField()
     id_juego = models.IntegerField()
     cantidad = models.IntegerField()
-    precio = models.IntegerField()
-    descuento = models.IntegerField()
+
+    def __str__(self):
+        return self.id_detalle_venta
+
 
 class Juego(models.Model):
     id_juego = models.AutoField(primary_key=True)
@@ -21,30 +28,33 @@ class Juego(models.Model):
     precio_venta = models.IntegerField()
     stock = models.IntegerField()
     id_categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    descripcion = models.CharField(max_length=225)
-    disponible = models.CharField(max_length=1)
+    descripcion = models.TextField()
+
+    def __str__(self):
+        return self.nombre
+
 
 class MetodoPago(models.Model):
     id_metodo_pago = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=15)
 
-class Usuario(models.Model):
-    id_usuario = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=25)
-    ap_paterno = models.CharField(max_length=25)
-    ap_materno = models.CharField(max_length=25)
+    def __str__(self):
+        return self.nombre
+
+
+class Usuario(User):
     f_nacimiento = models.DateField()
-    correo = models.CharField(max_length=25)
-    direccion = models.CharField(max_length=225)
-    usuario = models.CharField(max_length=25)
-    contrasenia = models.CharField(max_length=100)
-    is_admin = models.CharField(max_length=1)
+    direccion = models.TextField()
+
+    def __str__(self):
+        return self.username
+
 
 class Venta(models.Model):
     id_venta = models.AutoField(primary_key=True)
     id_metodo_pago = models.ForeignKey(MetodoPago, on_delete=models.CASCADE)
     id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    impuesto = models.IntegerField()
-    total = models.IntegerField()
-    fecha = models.DateField()
+    fecha = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return str(self.id_venta)

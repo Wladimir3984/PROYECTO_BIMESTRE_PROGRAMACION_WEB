@@ -11,6 +11,28 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&family=Rubik+Dirt&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'app/css/catalogo.css' %}" />
+
+    <style>
+      * {
+      font-family: 'DynaPuff', cursive;
+      text-align: center;
+      font-size: 1rem;
+        }
+      nav > div > a {
+        backdrop-filter: blur(10px);
+      }
+
+    </style>
     {% block css %} {% endblock %}
   </head>
   <body>
@@ -63,14 +85,72 @@
                     </li>
                   </ul>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="{% url 'formulario' %}">Unete</a>
-                </li>
               </ul>
               <ul class="navbar-nav ms-auto pe-2">
+                {% if perms.auth.rol_supervisor or is_superuser %}
+
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link dropdown-toggle"
+                      href="#"
+                      id="navbarDropdown"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                      >
+                      ADMIN PANEL
+                    </a>
+                    <ul
+                      class="dropdown-menu dropdown-menu-center"
+                      aria-labelledby="navbarDropdown"
+                      >
+                      <li>
+                        <a class="dropdown-item" href="/oneturoetu234tnr4234rntrt234rnt234ntroeturoetur884oetnun/usroetnu2342342348rnteoenturoeuo213">Agregar Juego</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="/oneturoetu234tnr4234rntrt234rnt234ntroeturoetur884oetnun/usroetnu2342342348rnteoenturoeuo214">Lista de Juegos</a>
+                      </li>
+
+                      <!-- LAS SIGUIENTES LINEAS SE COMENTARAN YA QUE AUN NO SE REFINA LOS PARAMETROS PARA CREAR USUARIO
+                      <li>
+                        <a class="dropdown-item" href="/oneturoetu234tnr4234rntrt234rnt234ntroeturoetur884oetnun/usroetnu2342342348rnteoenturoeuo215">Agregar usuario</a>
+                      </li>
+                      <li>
+                      -->
+                      
+                        <a class="dropdown-item" href="/oneturoetu234tnr4234rntrt234rnt234ntroeturoetur884oetnun/usroetnu2342342348rnteoenturoeuo216">Lista de usuarios</a>
+                      </li>
+                    </ul>
+                  </li>
+
+                  {% endif %}
+
+
+                  {% if user.is_authenticated %}
+                  {% if perms.auth.rol_user and not user.is_superuser and not perms.auth.rol_supervisor %}
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#">Carrito</a>
+                  </li>
+                  {% endif %}}
+
+                  <li class="nav-item dropdown me-5">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          @{{ user.username }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-center">
+                          <li><a class="dropdown-item" href="/password_change">Cambiar contraseña</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a></li>
+                        </ul>
+                  </li>
+
+                {% else %}
                 <li class="nav-item">
-                  <a class="nav-link active" href="{% url 'loggin' %}">Login</a>
+                  <a class="nav-link active" href="{% url 'login' %}">Iniciar Sesión</a>
                 </li>
+
+                {% endif %}
+
               </ul>
             </div>
           </nav>
