@@ -135,4 +135,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='localhost:8000') #for browser-sync
+
+if config('CSRF_TRUSTED_ORIGINS', default=None):
+    CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS') #for browser-sync
