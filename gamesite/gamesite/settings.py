@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'gamesite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
-        'NAME': 'xe',
+        'NAME': 'orcl',
         'USER': 'USR_GAMESITE',
         'PASSWORD': 'duoc123456',
         'HOST': '',
