@@ -20,8 +20,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY', default='y7sivde+iernn#oent4oenturnoetusecurenoetetour?#h@$@uk+%ek!&nj!3hjg3@a') # default value is for development only
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -136,5 +134,10 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-if config('CSRF_TRUSTED_ORIGINS', default=None):
-    CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS') #for browser-sync
+if DEBUG:
+    # SECURITY WARNING: keep the secret key used in production secret!
+    SECRET_KEY = config('SECRET_KEY', default='y7sivde+iernn#oent4oenturnoetusecurenoetetour?#h@$@uk+%ek!&nj!3hjg3@a') # default value is for development only
+
+    if config('CSRF_TRUSTED_ORIGINS', default=None):
+        CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS').split(',')
+
