@@ -14,7 +14,7 @@ def agregar_juego(request):
             'insert_form': InsertGameForm()
         }
         if request.method == 'POST':
-            insert_form = InsertGameForm(data=request.POST)
+            insert_form = InsertGameForm(data=request.POST, files=request.FILES)
             if insert_form.is_valid():
                 insert_form.save()
                 data['mensaje'] = "Juego agregado correctamente"

@@ -29,6 +29,7 @@ class Juego(models.Model):
     stock = models.IntegerField()
     id_categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     descripcion = models.TextField()
+    imagen = models.ImageField(upload_to='juegos', null=True)
 
     def __str__(self):
         return self.nombre
