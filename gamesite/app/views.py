@@ -6,13 +6,21 @@ from django.contrib.auth.models import Permission
 #cambiar contraseña
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
-
+from rest_framework import viewsets
+from .serializers import CategoriaSerializer
+from .models import Categoria
 # Create your views here.
+
+
+class CategoriaViewSet(viewsets.ModelViewSet):
+    serializer_class = CategoriaSerializer
+    queryset = Categoria.objects.all()
 
 class MyPasswordChangeView(PasswordChangeView):
     form_class = PasswordChangeForm
     template_name = 'app/password_change_form.html'
     success_url = '/'
+
 
 def index(request):
     is_supervisor = request.user.groups.filter(name='supervisor').exists()
