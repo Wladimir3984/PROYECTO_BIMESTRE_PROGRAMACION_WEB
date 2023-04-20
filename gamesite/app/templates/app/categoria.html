@@ -1,0 +1,23 @@
+{% extends 'app/base_categoria.html' %}
+{% load static %}
+
+{% block title %} {{ categoria_actual.nombre }} {% endblock %}
+
+{% block games %}
+    {% for juego in juegos %}
+        <div class="col-12 col-md-4 col-lg-3 mt-3 me-3">
+            <div class="card">
+                {% if juego.imagen %}
+                    <img style="padding: 1rem;" src="{{ juego.imagen.url }}"/>
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ juego.nombre }}</h5>
+                    <p class="card-text">{{ juego.descripcion }}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Precio: ${{ juego.precio_venta }}</li>
+                </ul>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
