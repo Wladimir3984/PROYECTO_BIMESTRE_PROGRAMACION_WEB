@@ -8,7 +8,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from rest_framework import viewsets
 from .serializers import CategoriaSerializer
-from .models import Categoria
+from .models import Categoria, Juego
 # Create your views here.
 
 
@@ -25,38 +25,20 @@ class MyPasswordChangeView(PasswordChangeView):
 def index(request):
     is_supervisor = request.user.groups.filter(name='supervisor').exists()
     is_superuser = request.user.is_superuser
-    context = {'is_supervisor': is_supervisor, 'is_superuser': is_superuser}
+    categorias = Categoria.objects.all()
+    context = {'is_supervisor': is_supervisor, 'is_superuser': is_superuser, 'categorias': categorias}
     return render(request, 'app/index.html', context)
 
-def aventura(request):
+def categoria(request, nombre):
     is_supervisor = request.user.groups.filter(name='supervisor').exists()
     is_superuser = request.user.is_superuser
-    context = {'is_supervisor': is_supervisor, 'is_superuser': is_superuser}
-    return render(request, 'app/aventura.html', context)
+    categorias = Categoria.objects.all()
+    categoria_actual = Categoria.objects.get(nombre=nombre)
+    juegos = Juego.objects.filter(id_categoria=categoria_actual)
+    context = {'is_supervisor': is_supervisor, 'is_superuser': is_superuser, 'categorias': categorias,
+               'juegos': juegos, 'categoria_actual': categoria_actual}
+    return render(request, 'app/categoria.html', context)
 
-def plataforma(request):
-    is_supervisor = request.user.groups.filter(name='supervisor').exists()
-    is_superuser = request.user.is_superuser
-    context = {'is_supervisor': is_supervisor, 'is_superuser': is_superuser}
-    return render(request, 'app/plataforma.html', context)
-
-def guerra(request):
-    is_supervisor = request.user.groups.filter(name='supervisor').exists()
-    is_superuser = request.user.is_superuser
-    context = {'is_supervisor': is_supervisor, 'is_superuser': is_superuser}
-    return render(request, 'app/guerra.html', context)
-
-def terror(request):
-    is_supervisor = request.user.groups.filter(name='supervisor').exists()
-    is_superuser = request.user.is_superuser
-    context = {'is_supervisor': is_supervisor, 'is_superuser': is_superuser}
-    return render(request, 'app/terror.html', context)
-
-def rpg(request):
-    is_supervisor = request.user.groups.filter(name='supervisor').exists()
-    is_superuser = request.user.is_superuser
-    context = {'is_supervisor': is_supervisor, 'is_superuser': is_superuser}
-    return render(request, 'app/rpg.html', context)
 def registro(request):
     data = {
         'form': CustomUserCreationForm()

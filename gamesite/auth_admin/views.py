@@ -1,20 +1,22 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import InsertGameForm, InsertUserForm
-from app.models import Juego, Usuario
+from app.models import Juego, Usuario, Categoria
 # Create your views here.
 
 
 def agregar_juego(request):
     is_supervisor = request.user.has_perm('auth.rol_supervisor')
     is_superuser = request.user.is_superuser
+    categorias = Categoria.objects.all()
     if not is_supervisor and not is_superuser:
         return render(request, 'app/index.html')
     else:
         data = {
-            'insert_form': InsertGameForm()
+            'insert_form': InsertGameForm(),
+            'categorias': categorias
         }
         if request.method == 'POST':
-            insert_form = InsertGameForm(data=request.POST)
+            insert_form = InsertGameForm(data=request.POST, files=request.FILES)
             if insert_form.is_valid():
                 insert_form.save()
                 data['mensaje'] = "Juego agregado correctamente"
@@ -27,12 +29,14 @@ def agregar_juego(request):
 def listar_juegos(request):
     is_supervisor = request.user.has_perm('auth.rol_supervisor')
     is_superuser = request.user.is_superuser
+    categorias = Categoria.objects.all()
     if not is_supervisor and not is_superuser:
         return render(request, 'app/index.html')
     else:
         juegos = Juego.objects.all()
         data = {
-            'juegos': juegos
+            'juegos': juegos,
+            'categorias': categorias
         }
         return render(request, 'auth_admin/juegos_crud/listar.html', data)
 
@@ -100,12 +104,14 @@ def modificar_usuario(request, id):
 def listar_usuarios(request):
     is_supervisor = request.user.has_perm('auth.rol_supervisor')
     is_superuser = request.user.is_superuser
+    categorias = Categoria.objects.all()
     if not is_supervisor and not is_superuser:
         return render(request, 'app/index.html')
     else:
         usuarios = Usuario.objects.all()
         data = {
-            'juegos': usuarios
+            'juegos': usuarios,
+            'categorias': categorias
         }
         return render(request, 'auth_admin/usuario_crud/listar.html', data)
 
