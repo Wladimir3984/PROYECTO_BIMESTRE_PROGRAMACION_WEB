@@ -15,6 +15,8 @@ from .models import Categoria, Juego
 class CategoriaViewSet(viewsets.ModelViewSet):
     serializer_class = CategoriaSerializer
     queryset = Categoria.objects.all()
+    #En la siguiente linea se especifica que metodos se podran ocupar en esta view
+    http_method_names = ['get']
 
 class MyPasswordChangeView(PasswordChangeView):
     form_class = PasswordChangeForm
