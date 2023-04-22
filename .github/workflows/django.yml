@@ -23,8 +23,6 @@ jobs:
         pip install -r requirements.txt
     - name: Run Commands
       run: |
-        python gamesite/manage.py makemigrations
-        python gamesite/manage.py migrate
         python gamesite/manage.py runserver &
         sleep 10
         kill %1
