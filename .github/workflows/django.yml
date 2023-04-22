@@ -26,3 +26,5 @@ jobs:
         python gamesite/manage.py runserver &
         sleep 10
         kill %1
+    - name: Verificar estructura de directorios
+      run: ls -R
