@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,8 +20,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-)%hliycfz5^1hg@(mk8v#b5jrkd3m5(z(+b940#*_czx=6$a2h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -42,7 +41,8 @@ INSTALLED_APPS = [
     'app',
     'auth_admin',
     'crispy_forms',
-    "crispy_bootstrap5",
+    'crispy_bootstrap5',
+    'rest_framework',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'gamesite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
-        'NAME': 'orcl',
+        'NAME': 'xe',
         'USER': 'USR_GAMESITE',
         'PASSWORD': 'duoc123456',
         'HOST': '',
@@ -130,7 +130,20 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+import os
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+if DEBUG:
+    # SECURITY WARNING: keep the secret key used in production secret!
+    SECRET_KEY = config('SECRET_KEY', default='y7sivde+iernn#oent4oenturnoetusecurenoetetour?#h@$@uk+%ek!&nj!3hjg3@a') # default value is for development only
+
+    if config('CSRF_TRUSTED_ORIGINS', default=None):
+        CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS').split(',')
+

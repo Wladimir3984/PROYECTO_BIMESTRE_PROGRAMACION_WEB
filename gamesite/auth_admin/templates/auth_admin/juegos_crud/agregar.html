@@ -23,7 +23,7 @@
                     <h5 class="mb-3">Agrega videojuegos</h5>
                     <h6 class="card-subtitle mb-2 text-muted">insterta nuevos juegos para ofrecer a los usuarios
                     </h6>
-                    <form id="insert_game" action="" method="post">
+                    <form id="insert_game" action="" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ insert_form | crispy }}
                         <div class="d-grid gap-2">

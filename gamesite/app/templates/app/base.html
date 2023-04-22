@@ -68,21 +68,11 @@
                     Categorías
                   </a>
                   <ul class="dropdown-menu">
+                    {% for categoria in categorias %}
                     <li>
-                      <a class="dropdown-item" href="{% url 'terror' %}">Terror</a>
+                      <a class="dropdown-item" href="{% url 'categoria' categoria.nombre %}">{{ categoria.nombre }}</a>
                     </li>
-                    <li>
-                      <a class="dropdown-item" href="{% url 'guerra' %}">Guerra</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="{% url 'aventura' %}">Aventura</a>
-                    </li>
-                    <li><a class="dropdown-item" href="{% url 'rpg' %}">RPG</a></li>
-                    <li>
-                      <a class="dropdown-item" href="{% url 'plataforma' %}"
-                        >Plataforma</a
-                      >
-                    </li>
+                    {% endfor %}
                   </ul>
                 </li>
               </ul>
@@ -117,7 +107,7 @@
                       </li>
                       <li>
                       -->
-                      
+
                         <a class="dropdown-item" href="/oneturoetu234tnr4234rntrt234rnt234ntroeturoetur884oetnun/usroetnu2342342348rnteoenturoeuo216">Lista de usuarios</a>
                       </li>
                     </ul>
