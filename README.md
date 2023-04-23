@@ -1,3 +1,4 @@
+[![Django CI](https://github.com/Wladimir3984/PROYECTO_BIMESTRE_PROGRAMACION_WEB/actions/workflows/django.yml/badge.svg)](https://github.com/Wladimir3984/PROYECTO_BIMESTRE_PROGRAMACION_WEB/actions/workflows/django.yml)
 # GameSite
 
 Welcome to GameSite, a video game store where you can find games from different categories. We are proud to present our project to you.
