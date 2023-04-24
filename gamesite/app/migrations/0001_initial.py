@@ -19,14 +19,16 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Categoria',
             fields=[
-                ('id_categoria', models.AutoField(primary_key=True, serialize=False)),
+                ('id_categoria', models.AutoField(
+                    primary_key=True, serialize=False)),
                 ('nombre', models.CharField(max_length=25)),
             ],
         ),
         migrations.CreateModel(
             name='DetalleVenta',
             fields=[
-                ('id_detalle_venta', models.AutoField(primary_key=True, serialize=False)),
+                ('id_detalle_venta', models.AutoField(
+                    primary_key=True, serialize=False)),
                 ('id_venta', models.IntegerField()),
                 ('id_juego', models.IntegerField()),
                 ('cantidad', models.IntegerField()),
@@ -35,14 +37,21 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='MetodoPago',
             fields=[
-                ('id_metodo_pago', models.AutoField(primary_key=True, serialize=False)),
+                ('id_metodo_pago', models.AutoField(
+                    primary_key=True, serialize=False)),
                 ('nombre', models.CharField(max_length=15)),
             ],
         ),
         migrations.CreateModel(
             name='Usuario',
             fields=[
-                ('user_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to=settings.AUTH_USER_MODEL)),
+                ('user_ptr',
+                 models.OneToOneField(auto_created=True,
+                                      on_delete=django.db.models.deletion.CASCADE,
+                                      parent_link=True,
+                                      primary_key=True,
+                                      serialize=False,
+                                      to=settings.AUTH_USER_MODEL)),
                 ('f_nacimiento', models.DateField()),
                 ('direccion', models.TextField()),
             ],
@@ -61,8 +70,10 @@ class Migration(migrations.Migration):
             fields=[
                 ('id_venta', models.AutoField(primary_key=True, serialize=False)),
                 ('fecha', models.DateTimeField(auto_now_add=True)),
-                ('id_metodo_pago', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app.metodopago')),
-                ('id_usuario', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app.usuario')),
+                ('id_metodo_pago', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='app.metodopago')),
+                ('id_usuario', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='app.usuario')),
             ],
         ),
         migrations.CreateModel(
@@ -74,7 +85,8 @@ class Migration(migrations.Migration):
                 ('stock', models.IntegerField()),
                 ('descripcion', models.TextField()),
                 ('imagen', models.ImageField(upload_to=app.models.get_upload_to)),
-                ('id_categoria', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app.categoria')),
+                ('id_categoria', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='app.categoria')),
             ],
         ),
     ]

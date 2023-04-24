@@ -21,8 +21,10 @@ class DetalleVenta(models.Model):
     def __str__(self):
         return self.id_detalle_venta
 
+
 def get_upload_to(instance, filename):
     return f'juegos/{instance.id_categoria.nombre}/{filename}'
+
 
 class Juego(models.Model):
     id_juego = models.AutoField(primary_key=True)

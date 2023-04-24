@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from .forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import Permission
-#cambiar contraseña
+# cambiar contraseña
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from rest_framework import viewsets
@@ -15,8 +15,10 @@ from .models import Categoria, Juego
 class CategoriaViewSet(viewsets.ModelViewSet):
     serializer_class = CategoriaSerializer
     queryset = Categoria.objects.all()
-    #En la siguiente linea se especifica que metodos se podran ocupar en esta view
+    # En la siguiente linea se especifica que metodos se podran ocupar en esta
+    # view
     http_method_names = ['get']
+
 
 class MyPasswordChangeView(PasswordChangeView):
     form_class = PasswordChangeForm
@@ -28,8 +30,12 @@ def index(request):
     is_supervisor = request.user.groups.filter(name='supervisor').exists()
     is_superuser = request.user.is_superuser
     categorias = Categoria.objects.all()
-    context = {'is_supervisor': is_supervisor, 'is_superuser': is_superuser, 'categorias': categorias}
+    context = {
+        'is_supervisor': is_supervisor,
+        'is_superuser': is_superuser,
+        'categorias': categorias}
     return render(request, 'app/index.html', context)
+
 
 def categoria(request, nombre):
     is_supervisor = request.user.groups.filter(name='supervisor').exists()
@@ -40,6 +46,7 @@ def categoria(request, nombre):
     context = {'is_supervisor': is_supervisor, 'is_superuser': is_superuser, 'categorias': categorias,
                'juegos': juegos, 'categoria_actual': categoria_actual}
     return render(request, 'app/categoria.html', context)
+
 
 def registro(request):
     data = {
@@ -55,7 +62,9 @@ def registro(request):
             # Add the permission to the user
             user.user_permissions.add(permission)
 
-            user = authenticate(username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password1"])
+            user = authenticate(
+                username=formulario.cleaned_data["username"],
+                password=formulario.cleaned_data["password1"])
             login(request, user)
             return redirect(to="index")
         else:

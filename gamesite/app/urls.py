@@ -11,17 +11,20 @@ router.register('categoria', CategoriaViewSet)
 
 urlpatterns = [
     path('', index, name='index'),
-    #catalogo de videojuegos
+    # catalogo de videojuegos
     path('catalogo/<str:nombre>/', categoria, name='categoria'),
-    #registro
+    # registro
     path('registro/', registro, name='registro'),
-    #cambiar contraseña
-    path('password_change/', MyPasswordChangeView.as_view(), name='password_change'),
-    #rest_framework
+    # cambiar contraseña
+    path(
+        'password_change/',
+        MyPasswordChangeView.as_view(),
+        name='password_change'),
+    # rest_framework
     path('api/', include(router.urls)),
 ]
 
 if settings.DEBUG:
     from django.conf.urls.static import static
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
