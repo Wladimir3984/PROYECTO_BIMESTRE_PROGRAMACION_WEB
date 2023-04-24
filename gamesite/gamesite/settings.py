@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 from decouple import config
 
@@ -130,7 +131,6 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-import os
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -142,8 +142,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 if DEBUG:
     # SECURITY WARNING: keep the secret key used in production secret!
-    SECRET_KEY = config('SECRET_KEY', default='y7sivde+iernn#oent4oenturnoetusecurenoetetour?#h@$@uk+%ek!&nj!3hjg3@a') # default value is for development only
+    # default value is for development only
+    SECRET_KEY = config(
+        'SECRET_KEY',
+        default='y7sivde+iernn#oent4oenturnoetusecurenoetetour?#h@$@uk+%ek!&nj!3hjg3@a')
 
     if config('CSRF_TRUSTED_ORIGINS', default=None):
         CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS').split(',')
-

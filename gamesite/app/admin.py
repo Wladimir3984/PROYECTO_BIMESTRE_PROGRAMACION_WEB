@@ -8,4 +8,3 @@ admin.site.register(Juego)
 admin.site.register(MetodoPago)
 admin.site.register(Usuario)
 admin.site.register(Venta)
-

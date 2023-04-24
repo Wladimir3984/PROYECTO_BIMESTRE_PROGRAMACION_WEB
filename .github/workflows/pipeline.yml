@@ -1,0 +1,50 @@
+name: Django CI
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  avoid_redundancy:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          acces_token: ${{ github.token }}
+
+  lint:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v3
+    - name: autopep8 formatting
+      id: autopep8
+      uses: peter-evans/autopep8@v2
+      with:
+          args: --exit-code --recursive --in-place --aggressive .
+    - name: Fail if autopep8 made changes
+      if: steps.autopep8.outputs.exit-code == 2
+      run: exit 1
+
+
+
+  django_commands:
+    needs: [lint] # if the format of the code it isn´t good, fix it until try to run django_commands
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.11.3
+      uses: actions/setup-python@v3
+      with:
+        python-version: 3.11.3
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Run Commands
+      run: |
+        python gamesite/manage.py makemigrations --settings=gamesite.memory_settings
+        python gamesite/manage.py migrate --settings=gamesite.memory_settings
+        python gamesite/manage.py runserver --settings=gamesite.memory_settings &
+        sleep 10
+        kill %1
+

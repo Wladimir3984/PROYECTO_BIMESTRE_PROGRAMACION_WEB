@@ -16,7 +16,8 @@ def agregar_juego(request):
             'categorias': categorias
         }
         if request.method == 'POST':
-            insert_form = InsertGameForm(data=request.POST, files=request.FILES)
+            insert_form = InsertGameForm(
+                data=request.POST, files=request.FILES)
             if insert_form.is_valid():
                 insert_form.save()
                 data['mensaje'] = "Juego agregado correctamente"
@@ -128,6 +129,7 @@ def eliminarUsuario(request, id):
         except Exception as e:
             print(e)
         return render(request, 'auth_admin/usuario_crud/listar.html')
+
 
 def agregar_usuario(request):
     is_supervisor = request.user.has_perm('auth.rol_supervisor')

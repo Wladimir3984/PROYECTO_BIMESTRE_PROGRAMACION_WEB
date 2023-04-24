@@ -10,14 +10,14 @@ inserta_tablas_path = os.path.join(project_root, 'sql', 'inserta_tablas.sql')
 with open(inserta_tablas_path, 'r') as f:
     inserta_tablas = f.read()
 
+
 class Migration(migrations.Migration):
 
     initial = True
 
     dependencies = [('app', '0001_initial'),
-    ]
+                    ]
 
     operations = [
         migrations.RunSQL(inserta_tablas),
     ]
-
