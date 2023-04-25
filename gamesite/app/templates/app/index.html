@@ -144,6 +144,28 @@
               <p class="parrafo_custom">¡Bienvenidos a nuestra página de videojuegos! Aquí encontrarás los últimos lanzamientos y los juegos más populares del mercado. Sumérgete en mundos increíbles y vive aventuras emocionantes con nuestros juegos. Desde juegos de acción hasta juegos de estrategia, tenemos algo para todos los gustos. Nuestra selección de juegos es cuidadosamente seleccionada para ofrecerte solo lo mejor en entretenimiento. Además, ofrecemos ofertas especiales y descuentos exclusivos para nuestros clientes. ¡No esperes más y empieza a disfrutar de la mejor experiencia en videojuegos ahora mismo!</p>
             </div>
           </div>
+
+          <div id="catalogo">
+            <div class="container-fluid">
+              <div class="row d-flex justify-content-md-center">
+                <h1 class="titulo_custom">¡Ultimos lanzamientos con mejor rating en RAWG API!</h1>
+                {% for game in games %}
+                <div class="col-12 col-md-4 col-lg-3 mt-3 me-3">
+                  <div class="card">
+                    {% if game.background_image %}
+                    <img style="padding: 1rem;" src="{{ game.background_image }}"/>
+                    {% endif %}
+                    <div class="card-body">
+                      <h5 class="card-title">{{ game.name }}</h5>
+                      <p>Fecha de lanzamiento: {{ game.released }}</p>
+                      <p>Calificación: {{ game.rating }}</p>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 {% endblock %}
