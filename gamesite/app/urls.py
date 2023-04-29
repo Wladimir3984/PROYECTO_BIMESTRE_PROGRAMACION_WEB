@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import index, registro, categoria
+from .views import index, registro, categoria, perfil
 from django.contrib.auth import views as auth_views
 from .views import MyPasswordChangeView, CategoriaViewSet
 from rest_framework import routers
@@ -15,6 +15,9 @@ urlpatterns = [
     path('catalogo/<str:nombre>/', categoria, name='categoria'),
     # registro
     path('registro/', registro, name='registro'),
+    
+    path('perfil/', perfil, name='perfil'),
+    
     # cambiar contraseña
     path(
         'password_change/',
