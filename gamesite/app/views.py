@@ -1,14 +1,13 @@
-from django.shortcuts import render
-from django.shortcuts import redirect
-from .forms import CustomUserCreationForm
+from django.shortcuts import render, redirect
+from .forms import CustomUserCreationForm, ProfileInfo
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import Permission
+from django.contrib.auth.models import Permission, User
 # cambiar contraseña
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from rest_framework import viewsets
 from .serializers import CategoriaSerializer
-from .models import Categoria, Juego
+from .models import Categoria, Juego, Usuario
 # consumir api externa
 import requests
 from datetime import datetime, timedelta
@@ -91,3 +90,18 @@ def registro(request):
         else:
             data["form"] = formulario
     return render(request, 'registration/register.html', data)
+
+
+def perfil(request):
+    usuario = Usuario.objects.get(user_ptr_id=request.user.id)
+    data = {
+        'form': ProfileInfo(instance=usuario)
+    }
+    if request.method == 'POST':
+        insert_form = ProfileInfo(data=request.POST, instance=usuario)
+        if insert_form.is_valid():
+            insert_form.save()
+            return redirect(to="perfil")
+        else:
+            data['insert_form'] = insert_form
+    return render(request, 'app/perfil/perfil.html', data)
