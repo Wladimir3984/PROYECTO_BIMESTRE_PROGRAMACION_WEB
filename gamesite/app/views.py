@@ -12,6 +12,11 @@ from .models import Categoria, Juego, Usuario
 import requests
 from datetime import datetime, timedelta
 
+from rest_framework.decorators import api_view
+from rest_framework.authtoken.models import Token
+from rest_framework.response import Response
+from django.contrib.auth.hashers import check_password
+
 # Create your views here.
 
 
@@ -120,3 +125,23 @@ def perfil(request):
             else:
                 data['insert_form'] = insert_form
     return render(request, 'app/perfil/perfil.html', data)
+
+#Creacion de Token
+@api_view(['POST'])
+def logCheck(request):
+    #nombre de usuario y contraseña de superusuario (en mi caso es admin admin)
+    username = 'admin'
+    password = 'admin'
+    try:
+        #Busca en la base de datos al usuario
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        return Response('Usuario invalido')
+    #valida la contraseña del usuario
+    pdw_valid = check_password(password, user.password)
+    if not pdw_valid:
+        return Response('Contraseña invalido')
+    #Crea el token que se asocia al usuario
+    token, created = Token.objects.get_or_create(user=user)
+    #Devuelve el Token
+    return Response(token.key)
