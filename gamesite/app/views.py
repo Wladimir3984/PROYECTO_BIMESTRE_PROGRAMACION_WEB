@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import CustomUserCreationForm, ProfileInfo
+from .forms import CustomUserCreationForm, ProfileInfo, ProfileUserInfo
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import Permission, User
 # cambiar contraseña
@@ -93,15 +93,30 @@ def registro(request):
 
 
 def perfil(request):
-    usuario = Usuario.objects.get(user_ptr_id=request.user.id)
-    data = {
-        'form': ProfileInfo(instance=usuario)
-    }
-    if request.method == 'POST':
-        insert_form = ProfileInfo(data=request.POST, instance=usuario)
-        if insert_form.is_valid():
-            insert_form.save()
-            return redirect(to="perfil")
-        else:
-            data['insert_form'] = insert_form
+    is_supervisor = request.user.has_perm('auth.rol_supervisor')
+    is_superuser = request.user.is_superuser
+    if not is_supervisor and not is_superuser:
+        usuario = Usuario.objects.get(user_ptr_id=request.user.id)
+        data = {
+            'form': ProfileInfo(instance=usuario)
+        }
+        if request.method == 'POST':
+            insert_form = ProfileInfo(data=request.POST, instance=usuario)
+            if insert_form.is_valid():
+                insert_form.save()
+                return redirect(to="perfil")
+            else:
+                data['insert_form'] = insert_form
+    else:
+        usuario = User.objects.get(id=request.user.id)
+        data = {
+            'form': ProfileUserInfo(instance=usuario)
+        }
+        if request.method == 'POST':
+            insert_form = ProfileUserInfo(data=request.POST, instance=usuario)
+            if insert_form.is_valid():
+                insert_form.save()
+                return redirect(to="perfil")
+            else:
+                data['insert_form'] = insert_form
     return render(request, 'app/perfil/perfil.html', data)
