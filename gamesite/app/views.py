@@ -129,9 +129,9 @@ def perfil(request):
 #Creacion de Token
 @api_view(['POST'])
 def logCheck(request):
-    #nombre de usuario y contraseña de superusuario (en mi caso es admin admin)
-    username = 'admin'
-    password = 'admin'
+    #nombre de usuario y contraseña de superusuario
+    username = request.POST.get('username')
+    password = request.POST.get('password')
     try:
         #Busca en la base de datos al usuario
         user = User.objects.get(username=username)
