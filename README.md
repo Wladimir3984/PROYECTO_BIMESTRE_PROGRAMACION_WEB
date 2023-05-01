@@ -20,6 +20,18 @@ This repository is used to track our work during the bimester.
 - DANIEL IGNACIO BARRIGA MOLINA
 - WLADIMIR ISAAC URZUA CALDERON
 
+## Get Access to Our API
+
+1. Create an account on our web application.
+2. Click on 'get API key'.
+3. Copy the token.
+4. Access with Postman.
+5. Take this image as a reference:
+
+### In headers; key: Authorization, value: token pasteYourTokenHere
+
+![image](https://user-images.githubusercontent.com/83993271/235538273-ae43ebae-893f-49bd-8f4f-2448c6ac49c2.png)
+
 
 ## Roles
 
