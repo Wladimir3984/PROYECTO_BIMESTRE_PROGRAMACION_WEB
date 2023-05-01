@@ -128,6 +128,9 @@
                           @{{ user.username }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-center">
+                          {% if user.is_superuser or perms.auth.rol_supervisor %}
+                          <li><a class="dropdown-item" href="/show_token">Token</a></li>
+                          {% endif %}
                           <li><a class="dropdown-item" href="/perfil">Perfil</a></li>
                           <li><a class="dropdown-item" href="/password_change">Cambiar contraseña</a></li>
                           <li><hr class="dropdown-divider"></li>
