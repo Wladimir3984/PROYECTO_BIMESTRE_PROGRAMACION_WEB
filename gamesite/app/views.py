@@ -16,6 +16,8 @@ from rest_framework.decorators import api_view
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from django.contrib.auth.hashers import check_password
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 
@@ -26,6 +28,8 @@ class CategoriaViewSet(viewsets.ModelViewSet):
     # En la siguiente linea se especifica que metodos se podran ocupar en esta
     # view
     http_method_names = ['get']
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
 
 class MyPasswordChangeView(PasswordChangeView):
