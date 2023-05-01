@@ -130,25 +130,28 @@ def perfil(request):
                 data['insert_form'] = insert_form
     return render(request, 'app/perfil/perfil.html', data)
 
-#Creacion de Token
+# Creacion de Token
+
+
 @api_view(['POST'])
 def logCheck(request):
-    #nombre de usuario y contraseña de superusuario
+    # nombre de usuario y contraseña de superusuario
     username = request.POST.get('username')
     password = request.POST.get('password')
     try:
-        #Busca en la base de datos al usuario
+        # Busca en la base de datos al usuario
         user = User.objects.get(username=username)
     except User.DoesNotExist:
         return Response('Usuario invalido')
-    #valida la contraseña del usuario
+    # valida la contraseña del usuario
     pdw_valid = check_password(password, user.password)
     if not pdw_valid:
         return Response('Contraseña invalido')
-    #Crea el token que se asocia al usuario
+    # Crea el token que se asocia al usuario
     token, created = Token.objects.get_or_create(user=user)
-    #Devuelve el Token
+    # Devuelve el Token
     return Response(token.key)
+
 
 def show_token(request):
     Token.objects.get_or_create(user=request.user)

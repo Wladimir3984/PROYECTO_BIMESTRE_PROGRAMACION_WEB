@@ -23,6 +23,7 @@ class CustomUserCreationForm(UserCreationForm):
             "f_nacimiento",
             "direccion")
 
+
 class ProfileInfo(forms.ModelForm):
     f_nacimiento = forms.DateField(widget=DateInput)
     direccion = forms.CharField(widget=forms.Textarea(attrs={'rows': 2}))
@@ -36,6 +37,7 @@ class ProfileInfo(forms.ModelForm):
             "last_name",
             "f_nacimiento",
             "direccion")
+
 
 class ProfileUserInfo(forms.ModelForm):
     class Meta:

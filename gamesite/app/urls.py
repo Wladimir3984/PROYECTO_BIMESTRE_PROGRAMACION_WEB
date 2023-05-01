@@ -14,11 +14,11 @@ urlpatterns = [
     path('catalogo/<str:nombre>/', categoria, name='categoria'),
     # registro
     path('registro/', registro, name='registro'),
-    
+
     path('perfil/', perfil, name='perfil'),
-    
+
     path('logCheck/', logCheck, name='logCheck'),
-    
+
     path('show_token/', show_token, name='show_token'),
     # cambiar contraseña
     path(
