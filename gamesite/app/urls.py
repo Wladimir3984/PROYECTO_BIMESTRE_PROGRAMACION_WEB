@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import index, registro, categoria, perfil, logCheck
+from .views import index, registro, categoria, perfil, logCheck, show_token
 from .views import MyPasswordChangeView, CategoriaViewSet
 from rest_framework import routers
 from django.conf import settings
@@ -18,6 +18,8 @@ urlpatterns = [
     path('perfil/', perfil, name='perfil'),
     
     path('logCheck/', logCheck, name='logCheck'),
+    
+    path('show_token/', show_token, name='show_token'),
     # cambiar contraseña
     path(
         'password_change/',

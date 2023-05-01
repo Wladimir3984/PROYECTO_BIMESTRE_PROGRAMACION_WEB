@@ -149,3 +149,11 @@ def logCheck(request):
     token, created = Token.objects.get_or_create(user=user)
     #Devuelve el Token
     return Response(token.key)
+
+def show_token(request):
+    Token.objects.get_or_create(user=request.user)
+    token = Token.objects.filter(user_id=request.user.id)
+    data = {
+        'token': token
+    }
+    return render(request, 'app/perfil/show_token.html', data)
