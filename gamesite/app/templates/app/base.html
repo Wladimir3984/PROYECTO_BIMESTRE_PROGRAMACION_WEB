@@ -128,9 +128,7 @@
                           @{{ user.username }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-center">
-                          {% if perms.auth.rol_user and not user.is_superuser and not perms.auth.rol_supervisor %}
                           <li><a class="dropdown-item" href="/perfil">Perfil</a></li>
-                          {% endif %}
                           <li><a class="dropdown-item" href="/password_change">Cambiar contraseña</a></li>
                           <li><hr class="dropdown-divider"></li>
                           <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a></li>
