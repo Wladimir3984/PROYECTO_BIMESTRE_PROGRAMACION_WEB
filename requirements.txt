@@ -5,3 +5,4 @@ crispy-bootstrap5
 python-decouple==3.7
 django-rest-framework
 pillow
+requests

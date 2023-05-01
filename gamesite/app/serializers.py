@@ -1,12 +1,14 @@
 from .models import Categoria
 from rest_framework import serializers
+from rest_framework.permissions import IsAuthenticated
 
 
 class CategoriaSerializer(serializers.ModelSerializer):
     # Los siguientes campos los dejaremos como solo lectura ya que no queremos
     # que accedan a estos
-    id_categoria = serializers.IntegerField(read_only=True)
-    nombre = serializers.CharField(read_only=True)
+    id_categoria = serializers.IntegerField()
+    nombre = serializers.CharField()
+    permission_classes = [IsAuthenticated]
 
     class Meta:
         model = Categoria

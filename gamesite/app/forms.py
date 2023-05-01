@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
-from .models import Usuario
+from .models import Usuario, User
 from django import forms
 
 
@@ -22,3 +22,28 @@ class CustomUserCreationForm(UserCreationForm):
             "last_name",
             "f_nacimiento",
             "direccion")
+
+
+class ProfileInfo(forms.ModelForm):
+    f_nacimiento = forms.DateField(widget=DateInput)
+    direccion = forms.CharField(widget=forms.Textarea(attrs={'rows': 2}))
+
+    class Meta:
+        model = Usuario
+        fields = (
+            "username",
+            "email",
+            "first_name",
+            "last_name",
+            "f_nacimiento",
+            "direccion")
+
+
+class ProfileUserInfo(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = (
+            "username",
+            "email",
+            "first_name",
+            "last_name",)
