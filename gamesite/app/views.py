@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import CustomUserCreationForm, ProfileInfo
+from .forms import CustomUserCreationForm, ProfileInfo, ProfileUserInfo
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import Permission, User
 # cambiar contraseña
@@ -12,6 +12,13 @@ from .models import Categoria, Juego, Usuario
 import requests
 from datetime import datetime, timedelta
 
+from rest_framework.decorators import api_view
+from rest_framework.authtoken.models import Token
+from rest_framework.response import Response
+from django.contrib.auth.hashers import check_password
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+
 # Create your views here.
 
 
@@ -21,6 +28,8 @@ class CategoriaViewSet(viewsets.ModelViewSet):
     # En la siguiente linea se especifica que metodos se podran ocupar en esta
     # view
     http_method_names = ['get']
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
 
 class MyPasswordChangeView(PasswordChangeView):
@@ -93,15 +102,50 @@ def registro(request):
 
 
 def perfil(request):
-    usuario = Usuario.objects.get(user_ptr_id=request.user.id)
-    data = {
-        'form': ProfileInfo(instance=usuario)
-    }
-    if request.method == 'POST':
-        insert_form = ProfileInfo(data=request.POST, instance=usuario)
-        if insert_form.is_valid():
-            insert_form.save()
-            return redirect(to="perfil")
-        else:
-            data['insert_form'] = insert_form
+    is_supervisor = request.user.has_perm('auth.rol_supervisor')
+    is_superuser = request.user.is_superuser
+    if not is_supervisor and not is_superuser:
+        usuario = Usuario.objects.get(user_ptr_id=request.user.id)
+        data = {
+            'form': ProfileInfo(instance=usuario)
+        }
+        if request.method == 'POST':
+            insert_form = ProfileInfo(data=request.POST, instance=usuario)
+            if insert_form.is_valid():
+                insert_form.save()
+                return redirect(to="perfil")
+            else:
+                data['insert_form'] = insert_form
+    else:
+        usuario = User.objects.get(id=request.user.id)
+        data = {
+            'form': ProfileUserInfo(instance=usuario)
+        }
+        if request.method == 'POST':
+            insert_form = ProfileUserInfo(data=request.POST, instance=usuario)
+            if insert_form.is_valid():
+                insert_form.save()
+                return redirect(to="perfil")
+            else:
+                data['insert_form'] = insert_form
     return render(request, 'app/perfil/perfil.html', data)
+
+#Creacion de Token
+@api_view(['POST'])
+def logCheck(request):
+    #nombre de usuario y contraseña de superusuario
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    try:
+        #Busca en la base de datos al usuario
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        return Response('Usuario invalido')
+    #valida la contraseña del usuario
+    pdw_valid = check_password(password, user.password)
+    if not pdw_valid:
+        return Response('Contraseña invalido')
+    #Crea el token que se asocia al usuario
+    token, created = Token.objects.get_or_create(user=user)
+    #Devuelve el Token
+    return Response(token.key)
