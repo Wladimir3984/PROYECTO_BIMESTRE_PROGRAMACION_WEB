@@ -2,10 +2,6 @@
 __pycache__
 *.pyc
 
-# for make docker tests #
-gamesite/Dockerfile
-gamesite/docker-compose.yml
-
 # environment variables #
 .env
 

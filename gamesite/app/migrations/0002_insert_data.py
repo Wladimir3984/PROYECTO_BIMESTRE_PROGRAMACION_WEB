@@ -4,8 +4,7 @@ from django.db import migrations
 from django.conf import settings
 import os
 
-project_root = os.path.dirname(settings.BASE_DIR)
-inserta_tablas_path = os.path.join(project_root, 'sql', 'inserta_tablas.sql')
+inserta_tablas_path = os.path.join(settings.BASE_DIR, 'sql', 'inserta_tablas.sql')
 
 with open(inserta_tablas_path, 'r') as f:
     inserta_tablas = f.read()

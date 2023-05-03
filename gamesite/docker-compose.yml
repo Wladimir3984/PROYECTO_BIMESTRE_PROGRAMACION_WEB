@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:15.2-alpine
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=gamesite_db_postgresql
+      - POSTGRES_USER=gamesite_usr
+      - POSTGRES_PASSWORD=toeu238423847oetn4etourteo4uc38372treon54u838erton4uctellottuc34388
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_NAME=gamesite_db_postgresql
+      - POSTGRES_USER=gamesite_usr
+      - POSTGRES_PASSWORD=toeu238423847oetn4etourteo4uc38372treon54u838erton4uctellottuc34388
+    depends_on:
+      - db
