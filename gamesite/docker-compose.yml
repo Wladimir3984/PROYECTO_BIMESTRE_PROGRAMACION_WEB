@@ -1,8 +1,8 @@
 services:
   db:
     image: postgres:15.2-alpine
-    volumes:
-      - ./data/db:/var/lib/postgresql/data
+      #volumes:
+      #- ./data/db:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=gamesite_db_postgresql
       - POSTGRES_USER=gamesite_usr
