@@ -59,7 +59,7 @@ To get started with this project, you'll need to have a local development enviro
 
 - Python 3.11.3(recommended)
 
-### Installation
+### Installation in local machine with oracle 21c xe
 
 1. Create a database with the user "USR_GAMESITE" and password "duoc123456".
 2. Clone this repository to your local machine.
@@ -68,6 +68,15 @@ To get started with this project, you'll need to have a local development enviro
 5. Create a superuser by running `python manage.py createsuperuser`.
 6. Run the Django development server by running `python manage.py runserver`.
 7. Open your web browser and navigate to `http://localhost:8000`.
+
+### Using Docker
+
+0. You must have Docker and docker compose
+1. docker compose build
+2. docker compose up
+3. execute Django commands(without stop the containers):
+    * docker compose exec web python manage.py migrate
+    * docker compose exec web python manage.py createsuperuser
 
 **Note:** Table insertions are done automatically when performing database migrations.
 
