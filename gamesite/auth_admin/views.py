@@ -9,7 +9,7 @@ def agregar_juego(request):
     is_superuser = request.user.is_superuser
     categorias = Categoria.objects.all()
     if not is_supervisor and not is_superuser:
-        return render(request, 'app/index.html')
+        return render(request, 'app/no_access.html')
     else:
         data = {
             'insert_form': InsertGameForm(),
