@@ -65,14 +65,14 @@ def modificarJuego(request, id):
         return render(request, 'auth_admin/juegos_crud/modificar.html', data)
 
 
-def eliminarJuego(request, id):
+def eliminarJuego(request):
     is_supervisor = request.user.has_perm('auth.rol_supervisor')
     is_superuser = request.user.is_superuser
     if not is_supervisor and not is_superuser:
         return render(request, 'app/index.html')
     else:
         try:
-            juego = Juego.objects.get(id_juego=id)
+            juego = Juego.objects.get(id_juego=request.POST.get('id_juego',''))
             juego.delete()
         except Exception as e:
             print(e)
