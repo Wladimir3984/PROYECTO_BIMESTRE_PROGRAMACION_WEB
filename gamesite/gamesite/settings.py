@@ -89,17 +89,28 @@ WSGI_APPLICATION = 'gamesite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.oracle',
-        'NAME': 'xe',
-        'USER': 'USR_GAMESITE',
-        'PASSWORD': 'duoc123456',
-        'HOST': '',
-        'PORT': '',
+if os.environ.get('POSTGRES_NAME'):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get('POSTGRES_NAME'),
+            'USER': os.environ.get('POSTGRES_USER'),
+            'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+            'HOST': 'db',
+            'PORT': 5432,
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.oracle',
+            'NAME': 'xe',
+            'USER': 'USR_GAMESITE',
+            'PASSWORD': 'duoc123456',
+            'HOST': '',
+            'PORT': '',
+        }
+    }
 
 
 # Password validation

@@ -19,6 +19,16 @@
 <div class="row mt-5">
 
     <div class="col col-md-1 col-lg-2">
+        <div class="card p-2 m-4">
+            <form method="POST" action="{% url 'eliminarJuego' %}">
+                {% csrf_token %}
+                <label for="id_juego" class="mb-1">Id Juego</label>
+                <input id="id_juego" class="form-control" type="text" name="id_juego">
+                <div class="d-grid gap-2 mt-2">
+                    <input type="submit" value="Eliminar">
+                </div>
+            </form>
+        </div>
     </div>
     <div class="col-12 col-md-10 col-lg-8">
         <div id="form">
