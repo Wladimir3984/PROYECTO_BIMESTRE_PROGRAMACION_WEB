@@ -9,7 +9,7 @@ def agregar_juego(request):
     is_superuser = request.user.is_superuser
     categorias = Categoria.objects.all()
     if not is_supervisor and not is_superuser:
-        return render(request, 'app/index.html')
+        return render(request, 'app/no_access.html')
     else:
         data = {
             'insert_form': InsertGameForm(),
@@ -32,7 +32,7 @@ def listar_juegos(request):
     is_superuser = request.user.is_superuser
     categorias = Categoria.objects.all()
     if not is_supervisor and not is_superuser:
-        return render(request, 'app/index.html')
+        return render(request, 'app/no_access.html')
     else:
         juegos = Juego.objects.all()
         data = {
@@ -46,7 +46,7 @@ def modificarJuego(request, id):
     is_supervisor = request.user.has_perm('auth.rol_supervisor')
     is_superuser = request.user.is_superuser
     if not is_supervisor and not is_superuser:
-        return render(request, 'app/index.html')
+        return render(request, 'app/no_access.html')
     else:
         juego = get_object_or_404(Juego, id_juego=id)
         data = {
@@ -69,7 +69,7 @@ def eliminarJuego(request):
     is_supervisor = request.user.has_perm('auth.rol_supervisor')
     is_superuser = request.user.is_superuser
     if not is_supervisor and not is_superuser:
-        return render(request, 'app/index.html')
+        return render(request, 'app/no_access.html')
     else:
         try:
             juego = Juego.objects.get(id_juego=request.POST.get('id_juego',''))
@@ -83,7 +83,7 @@ def modificar_usuario(request, id):
     is_supervisor = request.user.has_perm('auth.rol_supervisor')
     is_superuser = request.user.is_superuser
     if not is_supervisor and not is_superuser:
-        return render(request, 'app/index.html')
+        return render(request, 'app/no_access.html')
     else:
         usuario = get_object_or_404(Usuario, user_ptr_id=id)
         data = {
@@ -107,7 +107,7 @@ def listar_usuarios(request):
     is_superuser = request.user.is_superuser
     categorias = Categoria.objects.all()
     if not is_supervisor and not is_superuser:
-        return render(request, 'app/index.html')
+        return render(request, 'app/no_access.html')
     else:
         usuarios = Usuario.objects.all()
         data = {
@@ -121,7 +121,7 @@ def eliminarUsuario(request, id):
     is_supervisor = request.user.has_perm('auth.rol_supervisor')
     is_superuser = request.user.is_superuser
     if not is_supervisor and not is_superuser:
-        return render(request, 'app/index.html')
+        return render(request, 'app/no_access.html')
     else:
         try:
             usuario = Usuario.objects.get(user_ptr_id=id)
@@ -135,7 +135,7 @@ def agregar_usuario(request):
     is_supervisor = request.user.has_perm('auth.rol_supervisor')
     is_superuser = request.user.is_superuser
     if not is_supervisor and not is_superuser:
-        return render(request, 'app/index.html')
+        return render(request, 'app/no_access.html')
     else:
         data = {
             'insert_form': InsertUserForm()
