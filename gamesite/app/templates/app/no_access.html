@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Error</title>
-    </head>
-    <body>
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Error{% endblock %}
+
+{% block main %}
         <h1>Error: no tienes acceso</h1>
         <p>Lo siento, no tienes acceso.</p>
-    </body>
-</html>
+{% endblock %}
+
