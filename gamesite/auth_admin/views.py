@@ -72,7 +72,9 @@ def eliminarJuego(request):
         return render(request, 'app/no_access.html')
     else:
         try:
-            juego = Juego.objects.get(id_juego=request.POST.get('id_juego',''))
+            juego = Juego.objects.get(
+                id_juego=request.POST.get(
+                    'id_juego', ''))
             juego.delete()
         except Exception as e:
             print(e)
