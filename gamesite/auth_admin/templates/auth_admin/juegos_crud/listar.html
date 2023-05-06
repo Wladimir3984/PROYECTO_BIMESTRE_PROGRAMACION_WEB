@@ -17,13 +17,13 @@
 {% endblock %}
 {% block main %}
 <div class="row mt-5">
-    
+
     <div class="col col-md-1 col-lg-2">
         <div class="card p-2 m-4">
             <form method="POST" action="{% url 'eliminarJuego' %}">
                 {% csrf_token %}
-                <label for="id_juego">Id Juego</label>
-                <input id="id_juego" type="text" name="id_juego">
+                <label for="id_juego" class="mb-1">Id Juego</label>
+                <input id="id_juego" class="form-control" type="text" name="id_juego">
                 <div class="d-grid gap-2 mt-2">
                     <input type="submit" value="Eliminar">
                 </div>
